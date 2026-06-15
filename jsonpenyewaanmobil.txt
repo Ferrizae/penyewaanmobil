@@ -1,0 +1,218 @@
+{
+  "project": {
+    "name": "Website Penyewaan Mobil",
+    "description": "Sistem penyewaan mobil berbasis web menggunakan PHP Native, MySQL, dan Payment Gateway.",
+    "technology": {
+      "backend": "PHP Native",
+      "database": "MySQL",
+      "frontend": [
+        "HTML",
+        "CSS",
+        "Bootstrap 5",
+        "JavaScript"
+      ],
+      "payment_gateway": "Midtrans"
+    }
+  },
+  "roles": {
+    "admin": {
+      "features": [
+        "Login",
+        "Kelola Mobil",
+        "Kelola Kategori Mobil",
+        "Kelola Pelanggan",
+        "Kelola Penyewaan",
+        "Kelola Pembayaran",
+        "Kelola Pengembalian",
+        "Kelola Laporan"
+      ]
+    },
+    "user": {
+      "features": [
+        "Registrasi",
+        "Login",
+        "Melihat Daftar Mobil",
+        "Melihat Detail Mobil",
+        "Melakukan Penyewaan",
+        "Pembayaran Online",
+        "Melihat Status Penyewaan",
+        "Riwayat Transaksi"
+      ]
+    }
+  },
+  "pages": {
+    "authentication": [
+      {
+        "page": "Login",
+        "fields": [
+          "Email",
+          "Password"
+        ]
+      },
+      {
+        "page": "Register",
+        "fields": [
+          "Nama Lengkap",
+          "Email",
+          "Password",
+          "No HP",
+          "Alamat",
+          "Nomor SIM"
+        ]
+      }
+    ],
+    "admin": [
+      "Dashboard",
+      "Manajemen Mobil",
+      "Manajemen Kategori",
+      "Manajemen Pelanggan",
+      "Manajemen Penyewaan",
+      "Manajemen Pembayaran",
+      "Manajemen Pengembalian",
+      "Laporan"
+    ],
+    "user": [
+      "Dashboard",
+      "Daftar Mobil",
+      "Detail Mobil",
+      "Form Penyewaan",
+      "Checkout",
+      "Pembayaran",
+      "Riwayat Penyewaan"
+    ]
+  },
+  "database": {
+    "tables": [
+      {
+        "name": "users",
+        "fields": [
+          "id_user",
+          "nama",
+          "email",
+          "password",
+          "no_hp",
+          "alamat",
+          "nomor_sim",
+          "role",
+          "created_at"
+        ]
+      },
+      {
+        "name": "kategori_mobil",
+        "fields": [
+          "id_kategori",
+          "nama_kategori"
+        ]
+      },
+      {
+        "name": "mobil",
+        "fields": [
+          "id_mobil",
+          "id_kategori",
+          "nama_mobil",
+          "merk",
+          "tahun",
+          "plat_nomor",
+          "harga_sewa_per_hari",
+          "status",
+          "foto",
+          "deskripsi"
+        ]
+      },
+      {
+        "name": "penyewaan",
+        "fields": [
+          "id_sewa",
+          "id_user",
+          "id_mobil",
+          "tanggal_sewa",
+          "tanggal_kembali",
+          "lama_sewa",
+          "total_harga",
+          "status_sewa"
+        ]
+      },
+      {
+        "name": "pembayaran",
+        "fields": [
+          "id_pembayaran",
+          "id_sewa",
+          "metode_pembayaran",
+          "transaction_id",
+          "jumlah_bayar",
+          "status_pembayaran",
+          "tanggal_pembayaran"
+        ]
+      },
+      {
+        "name": "pengembalian",
+        "fields": [
+          "id_pengembalian",
+          "id_sewa",
+          "tanggal_pengembalian",
+          "kondisi_mobil",
+          "denda",
+          "catatan"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "user": [
+      "Registrasi",
+      "Login",
+      "Pilih Mobil",
+      "Isi Tanggal Sewa",
+      "Checkout",
+      "Pembayaran Melalui Midtrans",
+      "Penyewaan Diproses",
+      "Mobil Disewa",
+      "Pengembalian Mobil",
+      "Transaksi Selesai"
+    ],
+    "admin": [
+      "Login",
+      "Kelola Data Mobil",
+      "Verifikasi Penyewaan",
+      "Monitoring Pembayaran",
+      "Kelola Pengembalian",
+      "Cetak Laporan"
+    ]
+  },
+  "development_plan": {
+    "phase_1": [
+      "Setup Project",
+      "Setup Database",
+      "Koneksi Database"
+    ],
+    "phase_2": [
+      "Registrasi User",
+      "Login Multiuser",
+      "Session Management"
+    ],
+    "phase_3": [
+      "Dashboard Admin",
+      "Dashboard User"
+    ],
+    "phase_4": [
+      "CRUD Kategori Mobil",
+      "CRUD Mobil"
+    ],
+    "phase_5": [
+      "Fitur Penyewaan Mobil",
+      "Perhitungan Total Biaya"
+    ],
+    "phase_6": [
+      "Integrasi Payment Gateway Midtrans"
+    ],
+    "phase_7": [
+      "Pengembalian Mobil",
+      "Perhitungan Denda"
+    ],
+    "phase_8": [
+      "Laporan Penyewaan",
+      "Laporan Pembayaran",
+      "Testing dan Deployment"
+    ]
+  }
+}
