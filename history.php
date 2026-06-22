@@ -20,10 +20,16 @@ $db_connected = false;
 try {
     if (isset($pdo)) {
         $stmt = $pdo->prepare("
-            SELECT s.*, m.nama_mobil, m.merk, m.foto, m.plat_nomor, p.transaction_id, p.metode_pembayaran
+            SELECT s.*, m.nama_mobil, m.merk, m.foto, m.plat_nomor, 
+                   p.transaction_id, p.metode_pembayaran, p.status_pembayaran, p.bukti_pembayaran
             FROM penyewaan s
             JOIN mobil m ON s.id_mobil = m.id_mobil
-            LEFT JOIN pembayaran p ON s.id_sewa = p.id_sewa AND p.status_pembayaran = 'success'
+            LEFT JOIN (
+                SELECT p1.* FROM pembayaran p1
+                INNER JOIN (
+                    SELECT MAX(id_pembayaran) as max_id FROM pembayaran GROUP BY id_sewa
+                ) p2 ON p1.id_pembayaran = p2.max_id
+            ) p ON s.id_sewa = p.id_sewa
             WHERE s.id_user = ?
             ORDER BY s.id_sewa DESC
         ");
@@ -51,7 +57,10 @@ if (!$db_connected) {
             $r['merk'] = 'Ferrari';
             $r['foto'] = strtolower(str_replace(' ', '', $r['nama_mobil'])) . '.jpg';
             $r['plat_nomor'] = 'B ' . rand(10, 999) . ' RM';
-            $r['transaction_id'] = isset($_SESSION['mock_payments'][$r['id_sewa']]) ? $_SESSION['mock_payments'][$r['id_sewa']]['transaction_id'] : '-';
+            $mock_pay = $_SESSION['mock_payments'][$r['id_sewa']] ?? null;
+            $r['transaction_id'] = $mock_pay ? $mock_pay['transaction_id'] : '-';
+            $r['status_pembayaran'] = $mock_pay ? $mock_pay['status_pembayaran'] : null;
+            $r['bukti_pembayaran'] = $mock_pay ? $mock_pay['bukti_pembayaran'] : null;
         }
         unset($r); // unset reference
     }
@@ -68,6 +77,13 @@ require_once 'includes/header.php';
             <div class="alert-ferrari success">
                 <i class="fa-solid fa-circle-check"></i>
                 <span>Pembayaran berhasil diproses! Transaksi Anda sedang kami konfirmasi. Silakan menunggu pengambilan mobil.</span>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['upload_success'])): ?>
+            <div class="alert-ferrari success">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Bukti pembayaran berhasil diunggah! Transaksi Anda sedang dalam verifikasi admin.</span>
             </div>
         <?php endif; ?>
 
@@ -120,7 +136,15 @@ require_once 'includes/header.php';
                                 <td style="font-family: monospace; font-size: 12px; color: var(--color-muted);"><?= !empty($rent['transaction_id']) ? htmlspecialchars($rent['transaction_id']) : '-' ?></td>
                                 <td>
                                     <?php if ($rent['status_sewa'] === 'belum_bayar'): ?>
-                                        <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-warning); color: var(--color-semantic-warning);">Belum Bayar</span>
+                                        <?php if (!empty($rent['bukti_pembayaran']) && $rent['status_pembayaran'] === 'pending'): ?>
+                                            <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-info); color: var(--color-semantic-info);">Menunggu Verifikasi</span>
+                                        <?php elseif (empty($rent['bukti_pembayaran']) && $rent['status_pembayaran'] === 'pending'): ?>
+                                            <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-warning); color: var(--color-semantic-warning);">Belum Bayar (Pending)</span>
+                                        <?php elseif ($rent['status_pembayaran'] === 'cancel'): ?>
+                                            <span class="badge-pill-ferrari" style="border-color: var(--color-primary); color: var(--color-primary);">Pembayaran Ditolak</span>
+                                        <?php else: ?>
+                                            <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-warning); color: var(--color-semantic-warning);">Belum Bayar</span>
+                                        <?php endif; ?>
                                     <?php elseif ($rent['status_sewa'] === 'sudah_bayar'): ?>
                                         <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-success); color: var(--color-semantic-success);">Sudah Bayar</span>
                                     <?php elseif ($rent['status_sewa'] === 'diambil'): ?>
@@ -133,7 +157,15 @@ require_once 'includes/header.php';
                                 </td>
                                 <td style="text-align: center;">
                                     <?php if ($rent['status_sewa'] === 'belum_bayar'): ?>
-                                        <a href="checkout.php?id_sewa=<?= $rent['id_sewa'] ?>" class="btn-primary-ferrari" style="height: 32px; padding: 0 var(--spacing-xs); font-size: 11px;">Bayar</a>
+                                        <?php if (!empty($rent['bukti_pembayaran']) && $rent['status_pembayaran'] === 'pending'): ?>
+                                            <a href="payment.php?id_sewa=<?= $rent['id_sewa'] ?>" class="btn-outline-dark-ferrari" style="height: 32px; padding: 0 var(--spacing-xs); font-size: 11px; border-color: var(--color-semantic-info); color: var(--color-semantic-info);">Detail Bukti</a>
+                                        <?php elseif (empty($rent['bukti_pembayaran']) && $rent['status_pembayaran'] === 'pending'): ?>
+                                            <a href="payment.php?id_sewa=<?= $rent['id_sewa'] ?>" class="btn-primary-ferrari" style="height: 32px; padding: 0 var(--spacing-xs); font-size: 11px;">Upload Bukti</a>
+                                        <?php elseif ($rent['status_pembayaran'] === 'cancel'): ?>
+                                            <a href="checkout.php?id_sewa=<?= $rent['id_sewa'] ?>" class="btn-primary-ferrari" style="height: 32px; padding: 0 var(--spacing-xs); font-size: 11px; background-color: var(--color-primary);">Bayar Ulang</a>
+                                        <?php else: ?>
+                                            <a href="checkout.php?id_sewa=<?= $rent['id_sewa'] ?>" class="btn-primary-ferrari" style="height: 32px; padding: 0 var(--spacing-xs); font-size: 11px;">Bayar</a>
+                                        <?php endif; ?>
                                     <?php else: ?>
                                         <span style="font-size: 12px; color: var(--color-muted);"><i class="fa-solid fa-circle-check"></i> Terkonfirmasi</span>
                                     <?php endif; ?>

@@ -45,6 +45,10 @@ try {
 if (!$db_connected || !$rental) {
     if (isset($_SESSION['mock_rentals'][$id_sewa])) {
         $rental = $_SESSION['mock_rentals'][$id_sewa];
+        if ($rental['status_sewa'] !== 'belum_bayar') {
+            header("Location: history.php");
+            exit;
+        }
         $rental['merk'] = 'Ferrari';
         $rental['foto'] = strtolower(str_replace(' ', '', $rental['nama_mobil'])) . '.jpg';
         $rental['nama'] = $_SESSION['nama'];
@@ -52,6 +56,12 @@ if (!$db_connected || !$rental) {
         $rental['harga_sewa_per_hari'] = $rental['total_harga'] / $rental['lama_sewa'];
     } else {
         header("Location: index.php");
+        exit;
+    }
+} else {
+    // DB Connected, check status
+    if ($rental['status_sewa'] !== 'belum_bayar') {
+        header("Location: history.php");
         exit;
     }
 }
@@ -67,13 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $pdo->beginTransaction();
 
-            // Insert into pembayaran
-            $stmt_pay = $pdo->prepare("INSERT INTO pembayaran (id_sewa, metode_pembayaran, transaction_id, jumlah_bayar, status_pembayaran) VALUES (?, ?, ?, ?, 'success')");
-            $stmt_pay->execute([$id_sewa, $metode, $transaction_id, $jumlah_bayar]);
+            // Clear old pending/canceled payment entries for this booking first
+            $stmt_del = $pdo->prepare("DELETE FROM pembayaran WHERE id_sewa = ? AND status_pembayaran != 'success'");
+            $stmt_del->execute([$id_sewa]);
 
-            // Update rental status
-            $stmt_rent = $pdo->prepare("UPDATE penyewaan SET status_sewa = 'sudah_bayar' WHERE id_sewa = ?");
-            $stmt_rent->execute([$id_sewa]);
+            // Insert into pembayaran as pending
+            $stmt_pay = $pdo->prepare("INSERT INTO pembayaran (id_sewa, metode_pembayaran, transaction_id, jumlah_bayar, status_pembayaran) VALUES (?, ?, ?, ?, 'pending')");
+            $stmt_pay->execute([$id_sewa, $metode, $transaction_id, $jumlah_bayar]);
 
             $pdo->commit();
             $payment_success = true;
@@ -85,21 +95,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Mock session update
-        $_SESSION['mock_rentals'][$id_sewa]['status_sewa'] = 'sudah_bayar';
+        $_SESSION['mock_rentals'][$id_sewa]['status_sewa'] = 'belum_bayar';
         $_SESSION['mock_payments'][$id_sewa] = [
             'id_pembayaran' => count($_SESSION['mock_payments'] ?? []) + 1,
             'id_sewa' => $id_sewa,
             'metode_pembayaran' => $metode,
             'transaction_id' => $transaction_id,
             'jumlah_bayar' => $jumlah_bayar,
-            'status_pembayaran' => 'success',
+            'status_pembayaran' => 'pending',
+            'bukti_pembayaran' => null,
             'tanggal_pembayaran' => date('Y-m-d H:i:s')
         ];
         $payment_success = true;
     }
 
     if ($payment_success) {
-        header("Location: history.php?pay_success=1");
+        header("Location: payment.php?id_sewa=" . $id_sewa);
         exit;
     }
 }
