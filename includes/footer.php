@@ -36,9 +36,9 @@ $base_url = "/penyewaanmobil/";
             <div>
                 <h4 class="footer-col-title">Hubungi Kami</h4>
                 <ul class="footer-links">
-                    <li><span style="font-size: 13px;"><i class="fa-solid fa-envelope"></i> support@scuderiarental.com</span></li>
-                    <li><span style="font-size: 13px;"><i class="fa-solid fa-phone"></i> +62 21 555 777</span></li>
-                    <li><span style="font-size: 13px;"><i class="fa-solid fa-location-dot"></i> Jakarta, Indonesia</span></li>
+                    <li><span style="font-size: 13px;"><i class="fa-solid fa-envelope"></i> hardi@scuderiarental.com</span></li>
+                    <li><span style="font-size: 13px;"><i class="fa-solid fa-phone"></i> +62 87 863 664 414</span></li>
+                    <li><span style="font-size: 13px;"><i class="fa-solid fa-location-dot"></i> Mataram, NTB, Indonesia</span></li>
                 </ul>
             </div>
         </div>
