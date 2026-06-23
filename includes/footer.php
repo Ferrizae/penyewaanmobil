@@ -27,10 +27,10 @@ $base_url = "/penyewaanmobil/";
             <div>
                 <h4 class="footer-col-title">Tentang</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Profil Perusahaan</a></li>
-                    <li><a href="#">Layanan Premium</a></li>
-                    <li><a href="#">Syarat & Ketentuan</a></li>
-                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="<?= $base_url ?>about.php">Profil Perusahaan</a></li>
+                    <li><a href="<?= $base_url ?>services.php">Layanan Premium</a></li>
+                    <li><a href="<?= $base_url ?>terms.php">Syarat & Ketentuan</a></li>
+                    <li><a href="<?= $base_url ?>privacy.php">Kebijakan Privasi</a></li>
                 </ul>
             </div>
             <div>
