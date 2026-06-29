@@ -56,10 +56,13 @@ try {
 // Fallback Mock Data if DB offline
 if (!$db_connected || !$car) {
     $mock_cars = [
-        1 => ['id_mobil' => 1, 'nama_mobil' => 'SF90 Stradale', 'harga_sewa_per_hari' => 15000000.00],
-        2 => ['id_mobil' => 2, 'nama_mobil' => 'F8 Tributo', 'harga_sewa_per_hari' => 10000000.00],
-        3 => ['id_mobil' => 3, 'nama_mobil' => '812 Superfast', 'harga_sewa_per_hari' => 12000000.00],
-        4 => ['id_mobil' => 4, 'nama_mobil' => 'Roma', 'harga_sewa_per_hari' => 8000000.00]
+        1 => ['id_mobil' => 1, 'nama_mobil' => 'Avanza', 'merk' => 'Toyota', 'harga_sewa_per_hari' => 350000.00, 'foto' => 'avanza.jpg'],
+        2 => ['id_mobil' => 2, 'nama_mobil' => 'Xpander', 'merk' => 'Mitsubishi', 'harga_sewa_per_hari' => 450000.00, 'foto' => 'xpander.jpg'],
+        3 => ['id_mobil' => 3, 'nama_mobil' => 'Kijang Innova', 'merk' => 'Toyota', 'harga_sewa_per_hari' => 650000.00, 'foto' => 'innova.jpg'],
+        4 => ['id_mobil' => 4, 'nama_mobil' => 'All New Veloz', 'merk' => 'Toyota', 'harga_sewa_per_hari' => 450000.00, 'foto' => 'veloz.jpg'],
+        5 => ['id_mobil' => 5, 'nama_mobil' => 'Pajero Sport', 'merk' => 'Mitsubishi', 'harga_sewa_per_hari' => 850000.00, 'foto' => 'pajero.jpg'],
+        6 => ['id_mobil' => 6, 'nama_mobil' => 'Jazz', 'merk' => 'Honda', 'harga_sewa_per_hari' => 350000.00, 'foto' => 'jazz.jpg'],
+        7 => ['id_mobil' => 7, 'nama_mobil' => 'Civic Turbo', 'merk' => 'Honda', 'harga_sewa_per_hari' => 900000.00, 'foto' => 'civic.jpg']
     ];
     $car = isset($mock_cars[$id_mobil]) ? $mock_cars[$id_mobil] : $mock_cars[1];
 }
@@ -107,6 +110,8 @@ if ($db_connected) {
         'id_user' => $id_user,
         'id_mobil' => $id_mobil,
         'nama_mobil' => $car['nama_mobil'],
+        'merk' => $car['merk'],
+        'foto' => $car['foto'],
         'tanggal_sewa' => $tanggal_sewa,
         'tanggal_kembali' => $tanggal_kembali,
         'lama_sewa' => $days,

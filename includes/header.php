@@ -10,16 +10,16 @@ $base_url = "/penyewaanmobil/";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($page_title) ? $page_title . " | Scuderia Rental" : "Scuderia Rental - Luxury Car Rental" ?></title>
+    <title><?= isset($page_title) ? $page_title . " | Family Drive" : "Family Drive - Sewa Mobil Keluarga & Standar" ?></title>
     <link rel="stylesheet" href="<?= $base_url ?>assets/css/style.css">
-    <!-- FontAwesome for some luxury icons if needed -->
+    <!-- FontAwesome for some icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header class="top-nav">
     <a href="<?= $base_url ?>index.php" class="brand-mark">
-        <i class="fa-solid fa-horse"></i> SCUDERIA <span class="accent">RENTAL</span>
+        <i class="fa-solid fa-car-side"></i> FAMILY <span class="accent">DRIVE</span>
     </a>
     
     <nav style="display: flex; gap: var(--spacing-md); align-items: center;">

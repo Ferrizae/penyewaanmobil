@@ -49,8 +49,8 @@ if (!$db_connected || !$rental) {
             header("Location: history.php");
             exit;
         }
-        $rental['merk'] = 'Ferrari';
-        $rental['foto'] = strtolower(str_replace(' ', '', $rental['nama_mobil'])) . '.jpg';
+        $rental['merk'] = isset($rental['merk']) ? $rental['merk'] : 'Toyota';
+        $rental['foto'] = isset($rental['foto']) ? $rental['foto'] : 'avanza.jpg';
         $rental['nama'] = $_SESSION['nama'];
         $rental['email'] = $_SESSION['email'];
         $rental['harga_sewa_per_hari'] = $rental['total_harga'] / $rental['lama_sewa'];

@@ -29,67 +29,106 @@ if (!$db_connected || !$car) {
     $mock_cars = [
         1 => [
             'id_mobil' => 1,
-            'nama_mobil' => 'SF90 Stradale',
-            'merk' => 'Ferrari',
+            'nama_mobil' => 'Avanza',
+            'merk' => 'Toyota',
             'tahun' => 2023,
-            'plat_nomor' => 'B 90 SF',
-            'harga_sewa_per_hari' => 15000000.00,
+            'plat_nomor' => 'DR 1902 SA',
+            'harga_sewa_per_hari' => 350000.00,
             'status' => 'tersedia',
-            'foto' => 'sf90.jpg',
-            'deskripsi' => 'Plug-in Hybrid supercar featuring a twin-turbo V8 engine and three electric motors, generating a total of 1000 cv (986 hp). Pure performance redrawn for the future.',
-            'nama_kategori' => 'Hybrid Hypercar'
+            'foto' => 'avanza.jpg',
+            'deskripsi' => 'Toyota Avanza merupakan mobil MPV keluarga terfavorit di Indonesia, menawarkan kabin lapang dengan 7 kursi penumpang, AC double blower, dan kenyamanan berkendara terbaik untuk seluruh anggota keluarga.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         2 => [
             'id_mobil' => 2,
-            'nama_mobil' => 'F8 Tributo',
-            'merk' => 'Ferrari',
+            'nama_mobil' => 'Xpander',
+            'merk' => 'Mitsubishi',
             'tahun' => 2022,
-            'plat_nomor' => 'B 8 FT',
-            'harga_sewa_per_hari' => 10000000.00,
+            'plat_nomor' => 'DR 8008 FT',
+            'harga_sewa_per_hari' => 450000.00,
             'status' => 'tersedia',
-            'foto' => 'f8.jpg',
-            'deskripsi' => 'The tribute to the ultimate V8 engine. Delivering 720 cv of instant power without turbo lag, offering unmatched driver involvement on road and track.',
-            'nama_kategori' => 'Supercar V8'
+            'foto' => 'xpander.jpg',
+            'deskripsi' => 'Mitsubishi Xpander hadir dengan desain eksterior yang gagah, interior mewah senyap, suspensi stabil, serta ruang kabin lega yang ideal untuk petualangan keluarga Anda.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         3 => [
             'id_mobil' => 3,
-            'nama_mobil' => '812 Superfast',
-            'merk' => 'Ferrari',
+            'nama_mobil' => 'Kijang Innova',
+            'merk' => 'Toyota',
             'tahun' => 2021,
-            'plat_nomor' => 'B 812 SF',
-            'harga_sewa_per_hari' => 12000000.00,
+            'plat_nomor' => 'DR 8128 SF',
+            'harga_sewa_per_hari' => 650000.00,
             'status' => 'tersedia',
-            'foto' => '812.jpg',
-            'deskripsi' => 'Front mid-mounted 6.5-liter naturally aspirated V12 engine. The fastest and most powerful road-going Ferrari of its era, outputting 800 cv of symphonic power.',
-            'nama_kategori' => 'V12 Grand Tourer'
+            'foto' => 'innova.jpg',
+            'deskripsi' => 'Toyota Kijang Innova Reborn menghadirkan kemewahan berkelas, kenyamanan maksimal dengan ruang kaki luas, performa mesin tangguh, dan sangat cocok untuk perjalanan jarak jauh.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         4 => [
             'id_mobil' => 4,
-            'nama_mobil' => 'Roma',
-            'merk' => 'Ferrari',
+            'nama_mobil' => 'All New Veloz',
+            'merk' => 'Toyota',
             'tahun' => 2023,
-            'plat_nomor' => 'B 25 RM',
-            'harga_sewa_per_hari' => 8000000.00,
+            'plat_nomor' => 'DR 2525 RM',
+            'harga_sewa_per_hari' => 450000.00,
             'status' => 'tersedia',
-            'foto' => 'roma.jpg',
-            'deskripsi' => 'La Nuova Dolce Vita. A timeless, elegant, and minimal front-engined V8 coupe designed to represent the carefree, pleasurable way of life in Rome during the 1950s and 60s.',
-            'nama_kategori' => 'V12 Grand Tourer'
+            'foto' => 'veloz.jpg',
+            'deskripsi' => 'Toyota All New Veloz menyuguhkan fitur keselamatan mutakhir Toyota Safety Sense, desain modern premium, kabin fleksibel, dan kenyamanan prima untuk mobilitas urban keluarga.',
+            'nama_kategori' => 'MPV Keluarga'
+        ],
+        5 => [
+            'id_mobil' => 5,
+            'nama_mobil' => 'Pajero Sport',
+            'merk' => 'Mitsubishi',
+            'tahun' => 2022,
+            'plat_nomor' => 'DR 1555 PS',
+            'harga_sewa_per_hari' => 850000.00,
+            'status' => 'tersedia',
+            'foto' => 'pajero.jpg',
+            'deskripsi' => 'Mitsubishi Pajero Sport adalah SUV premium dengan mesin tangguh, ground clearance tinggi, fitur keselamatan lengkap, cocok untuk menaklukkan segala kondisi jalan dengan gagah.',
+            'nama_kategori' => 'SUV Tangguh'
+        ],
+        6 => [
+            'id_mobil' => 6,
+            'nama_mobil' => 'Jazz',
+            'merk' => 'Honda',
+            'tahun' => 2020,
+            'plat_nomor' => 'DR 9099 JZ',
+            'harga_sewa_per_hari' => 350000.00,
+            'status' => 'tersedia',
+            'foto' => 'jazz.jpg',
+            'deskripsi' => 'Honda Jazz merupakan hatchback lincah nan sporty, kabin fleksibel dengan sistem Ultra Seat, efisiensi bahan bakar tinggi, sangat ideal untuk bermanuver di jalan perkotaan.',
+            'nama_kategori' => 'Hatchback / City Car'
+        ],
+        7 => [
+            'id_mobil' => 7,
+            'nama_mobil' => 'Civic Turbo',
+            'merk' => 'Honda',
+            'tahun' => 2023,
+            'plat_nomor' => 'DR 1000 CV',
+            'harga_sewa_per_hari' => 900000.00,
+            'status' => 'tersedia',
+            'foto' => 'civic.jpg',
+            'deskripsi' => 'Honda Civic Sedan menyajikan desain eksterior agresif premium, kenyamanan berkendara tingkat tinggi, performa mesin turbo yang responsif, mencerminkan prestise dan gaya hidup modern.',
+            'nama_kategori' => 'Sedan Elegan'
         ]
     ];
     
-    // Default to SF90 if invalid id
+    // Default to Avanza if invalid id
     $car = isset($mock_cars[$id]) ? $mock_cars[$id] : $mock_cars[1];
 }
 
-// Define performance specs dynamically based on model for the "Ferrari-feeling" spec grid
+// Define specs dynamically based on model for the family car spec grid
 $specs = [
-    'SF90 Stradale' => ['power' => '1000 CV', 'top_speed' => '340 km/h', 'acceleration' => '2.5s', 'engine' => 'V8 Hybrid'],
-    'F8 Tributo'    => ['power' => '720 CV', 'top_speed' => '340 km/h', 'acceleration' => '2.9s', 'engine' => 'V8 Turbo'],
-    '812 Superfast' => ['power' => '800 CV', 'top_speed' => '340 km/h', 'acceleration' => '2.9s', 'engine' => 'V12 NA'],
-    'Roma'          => ['power' => '620 CV', 'top_speed' => '320 km/h', 'acceleration' => '3.4s', 'engine' => 'V8 Turbo']
+    'Avanza'        => ['seats' => '7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
+    'Xpander'       => ['seats' => '7 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
+    'Kijang Innova' => ['seats' => '7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Diesel / Bensin', 'engine_cap' => '2.400 cc / 2.000 cc'],
+    'All New Veloz' => ['seats' => '7 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
+    'Pajero Sport'  => ['seats' => '7 Kursi', 'transmission' => '8-Speed Matic', 'fuel' => 'Diesel (Solar)', 'engine_cap' => '2.400 cc'],
+    'Jazz'          => ['seats' => '5 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
+    'Civic Turbo'   => ['seats' => '5 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin Turbo', 'engine_cap' => '1.500 cc']
 ];
 
-$car_spec = isset($specs[$car['nama_mobil']]) ? $specs[$car['nama_mobil']] : ['power' => '600+ CV', 'top_speed' => '300+ km/h', 'acceleration' => 'under 4s', 'engine' => 'Ferrari Engine'];
+$car_spec = isset($specs[$car['nama_mobil']]) ? $specs[$car['nama_mobil']] : ['seats' => '5-7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin / Diesel', 'engine_cap' => '1.500 cc'];
 
 $page_title = $car['merk'] . " " . $car['nama_mobil'];
 require_once 'includes/header.php';
@@ -114,20 +153,20 @@ require_once 'includes/header.php';
                 <!-- Performance Spec Cells -->
                 <div class="spec-grid" style="margin-top: var(--spacing-md);">
                     <div class="spec-cell-ferrari">
-                        <div class="spec-value"><?= $car_spec['power'] ?></div>
-                        <div class="spec-label">Tenaga Maksimum</div>
+                        <div class="spec-value"><?= $car_spec['seats'] ?></div>
+                        <div class="spec-label">Kapasitas Kursi</div>
                     </div>
                     <div class="spec-cell-ferrari">
-                        <div class="spec-value"><?= $car_spec['top_speed'] ?></div>
-                        <div class="spec-label">Kecepatan Puncak</div>
+                        <div class="spec-value" style="font-size: 24px; font-weight: 700; line-height: 1.6;"><?= $car_spec['transmission'] ?></div>
+                        <div class="spec-label">Tipe Transmisi</div>
                     </div>
                     <div class="spec-cell-ferrari">
-                        <div class="spec-value"><?= $car_spec['acceleration'] ?></div>
-                        <div class="spec-label">0 - 100 km/h</div>
+                        <div class="spec-value" style="font-size: 24px; font-weight: 700; line-height: 1.6;"><?= $car_spec['fuel'] ?></div>
+                        <div class="spec-label">Bahan Bakar</div>
                     </div>
                     <div class="spec-cell-ferrari">
-                        <div class="spec-value"><?= $car_spec['engine'] ?></div>
-                        <div class="spec-label">Tipe Mesin</div>
+                        <div class="spec-value"><?= $car_spec['engine_cap'] ?></div>
+                        <div class="spec-label">Kapasitas Mesin</div>
                     </div>
                 </div>
             </div>

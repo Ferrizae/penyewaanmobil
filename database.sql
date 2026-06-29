@@ -78,22 +78,25 @@ CREATE TABLE IF NOT EXISTS pengembalian (
 
 -- Seed Kategori
 INSERT INTO kategori_mobil (id_kategori, nama_kategori) VALUES
-(1, 'Supercar V8'),
-(2, 'V12 Grand Tourer'),
-(3, 'Hybrid Hypercar'),
-(4, 'Luxury SUV')
+(1, 'MPV Keluarga'),
+(2, 'SUV Tangguh'),
+(3, 'Hatchback / City Car'),
+(4, 'Sedan Elegan')
 ON DUPLICATE KEY UPDATE id_kategori=VALUES(id_kategori);
 
 -- Seed Default Users (Passwords are admin123 and user123)
 INSERT INTO users (id_user, nama, email, password, no_hp, alamat, nomor_sim, role) VALUES
-(1, 'Alessandro Rossi', 'admin@ferrarirental.com', '$2y$10$eoeEeRLAbqHT.NUa/ua8ruLeNd45M7P5h3B8BxFSQjKmva/ZCI4XW', '081234567890', 'Maranello, Italy', 'SIM-ADMIN-999', 'admin'),
-(2, 'Michael Schumacher', 'user@ferrarirental.com', '$2y$10$t0bc18MgMdlv7zQD8oy3IO.QAneFw5RUJde7olp6hCg8k9DJGZwcG', '089876543210', 'Monaco GP Street No. 1', 'SIM-USER-777', 'user')
+(1, 'Hardi Wijaya', 'admin@familydriverental.com', '$2y$10$eoeEeRLAbqHT.NUa/ua8ruLeNd45M7P5h3B8BxFSQjKmva/ZCI4XW', '081234567890', 'Mataram, NTB, Indonesia', 'SIM-ADMIN-999', 'admin'),
+(2, 'Ferdi Pratama', 'user@familydriverental.com', '$2y$10$t0bc18MgMdlv7zQD8oy3IO.QAneFw5RUJde7olp6hCg8k9DJGZwcG', '089876543210', 'Jl. Langko No. 10, Mataram', 'SIM-USER-777', 'user')
 ON DUPLICATE KEY UPDATE id_user=VALUES(id_user);
 
 -- Seed Cars (Mobil)
 INSERT INTO mobil (id_mobil, id_kategori, nama_mobil, merk, tahun, plat_nomor, harga_sewa_per_hari, status, foto, deskripsi) VALUES
-(1, 3, 'SF90 Stradale', 'Ferrari', 2023, 'B 90 SF', 15000000.00, 'tersedia', 'sf90.jpg', 'Plug-in Hybrid supercar featuring a twin-turbo V8 engine and three electric motors, generating a total of 1000 cv (986 hp). Pure performance redrawn for the future.'),
-(2, 1, 'F8 Tributo', 'Ferrari', 2022, 'B 8 FT', 10000000.00, 'tersedia', 'f8.jpg', 'The tribute to the ultimate V8 engine. Delivering 720 cv of instant power without turbo lag, offering unmatched driver involvement on road and track.'),
-(3, 2, '812 Superfast', 'Ferrari', 2021, 'B 812 SF', 12000000.00, 'tersedia', '812.jpg', 'Front mid-mounted 6.5-liter naturally aspirated V12 engine. The fastest and most powerful road-going Ferrari of its era, outputting 800 cv of symphonic power.'),
-(4, 2, 'Roma', 'Ferrari', 2023, 'B 25 RM', 8000000.00, 'tersedia', 'roma.jpg', 'La Nuova Dolce Vita. A timeless, elegant, and minimal front-engined V8 coupe designed to represent the carefree, pleasurable way of life in Rome during the 1950s and 60s.')
+(1, 1, 'Avanza', 'Toyota', 2023, 'DR 1902 SA', 350000.00, 'tersedia', 'avanza.jpg', 'Toyota Avanza merupakan mobil MPV keluarga terfavorit di Indonesia, menawarkan kabin lapang dengan 7 kursi penumpang, AC double blower, dan kenyamanan berkendara terbaik untuk seluruh anggota keluarga.'),
+(2, 1, 'Xpander', 'Mitsubishi', 2022, 'DR 8008 FT', 450000.00, 'tersedia', 'xpander.jpg', 'Mitsubishi Xpander hadir dengan desain eksterior yang gagah, interior mewah senyap, suspensi stabil, serta ruang kabin lega yang ideal untuk petualangan keluarga Anda.'),
+(3, 1, 'Kijang Innova', 'Toyota', 2021, 'DR 8128 SF', 650000.00, 'tersedia', 'innova.jpg', 'Toyota Kijang Innova Reborn menghadirkan kemewahan berkelas, kenyamanan maksimal dengan ruang kaki luas, performa mesin tangguh, dan sangat cocok untuk perjalanan jarak jauh.'),
+(4, 1, 'All New Veloz', 'Toyota', 2023, 'DR 2525 RM', 450000.00, 'tersedia', 'veloz.jpg', 'Toyota All New Veloz menyuguhkan fitur keselamatan mutakhir Toyota Safety Sense, desain modern premium, kabin fleksibel, dan kenyamanan prima untuk mobilitas urban keluarga.'),
+(5, 2, 'Pajero Sport', 'Mitsubishi', 2022, 'DR 1555 PS', 850000.00, 'tersedia', 'pajero.jpg', 'Mitsubishi Pajero Sport adalah SUV premium dengan mesin tangguh, ground clearance tinggi, fitur keselamatan lengkap, cocok untuk menaklukkan segala kondisi jalan dengan gagah.'),
+(6, 3, 'Jazz', 'Honda', 2020, 'DR 9099 JZ', 350000.00, 'tersedia', 'jazz.jpg', 'Honda Jazz merupakan hatchback lincah nan sporty, kabin fleksibel dengan sistem Ultra Seat, efisiensi bahan bakar tinggi, sangat ideal untuk bermanuver di jalan perkotaan.'),
+(7, 4, 'Civic Turbo', 'Honda', 2023, 'DR 1000 CV', 900000.00, 'tersedia', 'civic.jpg', 'Honda Civic Sedan menyajikan desain eksterior agresif premium, kenyamanan berkendara tingkat tinggi, performa mesin turbo yang responsif, mencerminkan prestise dan gaya hidup modern.')
 ON DUPLICATE KEY UPDATE id_mobil=VALUES(id_mobil);

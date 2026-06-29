@@ -64,7 +64,7 @@ require_once 'includes/header.php';
         <div style="background-color: var(--color-canvas-elevated); padding: var(--spacing-md); border: 1px solid var(--color-hairline); border-radius: var(--rounded-none);">
             
             <h2 class="display-md" style="margin-bottom: var(--spacing-xs); text-align: center; text-transform: uppercase; letter-spacing: 1px;">Masuk Akun</h2>
-            <p style="color: var(--color-muted); font-size: 13px; text-align: center; margin-bottom: var(--spacing-md);">Akses portal pemesanan supercar Scuderia Rental</p>
+            <p style="color: var(--color-muted); font-size: 13px; text-align: center; margin-bottom: var(--spacing-md);">Akses portal pemesanan mobil Family Drive</p>
 
             <?php if (!empty($error_message)): ?>
                 <div class="alert-ferrari error">
@@ -93,8 +93,8 @@ require_once 'includes/header.php';
             
             <div style="margin-top: var(--spacing-md); padding-top: var(--spacing-xs); border-top: 1px dashed var(--color-hairline); font-size: 12px; color: var(--color-muted);">
                 <p style="font-weight: 600; margin-bottom: 2px;">Akun Demo Sistem:</p>
-                <p>Admin: <code style="color: var(--color-ink);">admin@ferrarirental.com</code> / Password: <code style="color: var(--color-ink);">admin123</code></p>
-                <p>Customer: <code style="color: var(--color-ink);">user@ferrarirental.com</code> / Password: <code style="color: var(--color-ink);">user123</code></p>
+                <p>Admin: <code style="color: var(--color-ink);">admin@familydriverental.com</code> / Password: <code style="color: var(--color-ink);">admin123</code></p>
+                <p>Customer: <code style="color: var(--color-ink);">user@familydriverental.com</code> / Password: <code style="color: var(--color-ink);">user123</code></p>
             </div>
             
         </div>

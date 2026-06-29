@@ -37,18 +37,21 @@ try {
 // Fallback Mock Data if DB offline
 if (!$db_connected) {
     $categories = [
-        ['id_kategori' => 1, 'nama_kategori' => 'Supercar V8'],
-        ['id_kategori' => 2, 'nama_kategori' => 'V12 Grand Tourer'],
-        ['id_kategori' => 3, 'nama_kategori' => 'Hybrid Hypercar'],
-        ['id_kategori' => 4, 'nama_kategori' => 'Luxury SUV']
+        ['id_kategori' => 1, 'nama_kategori' => 'MPV Keluarga'],
+        ['id_kategori' => 2, 'nama_kategori' => 'SUV Tangguh'],
+        ['id_kategori' => 3, 'nama_kategori' => 'Hatchback / City Car'],
+        ['id_kategori' => 4, 'nama_kategori' => 'Sedan Elegan']
     ];
 
     if (!isset($_SESSION['mock_cars'])) {
         $_SESSION['mock_cars'] = [
-            ['id_mobil' => 1, 'id_kategori' => 3, 'nama_mobil' => 'SF90 Stradale', 'merk' => 'Ferrari', 'tahun' => 2023, 'plat_nomor' => 'B 90 SF', 'harga_sewa_per_hari' => 15000000.00, 'status' => 'tersedia', 'foto' => 'sf90.jpg', 'deskripsi' => 'Plug-in Hybrid supercar', 'nama_kategori' => 'Hybrid Hypercar'],
-            ['id_mobil' => 2, 'id_kategori' => 1, 'nama_mobil' => 'F8 Tributo', 'merk' => 'Ferrari', 'tahun' => 2022, 'plat_nomor' => 'B 8 FT', 'harga_sewa_per_hari' => 10000000.00, 'status' => 'tersedia', 'foto' => 'f8.jpg', 'deskripsi' => 'V8 engine tribute.', 'nama_kategori' => 'Supercar V8'],
-            ['id_mobil' => 3, 'id_kategori' => 2, 'nama_mobil' => '812 Superfast', 'merk' => 'Ferrari', 'tahun' => 2021, 'plat_nomor' => 'B 812 SF', 'harga_sewa_per_hari' => 12000000.00, 'status' => 'tersedia', 'foto' => '812.jpg', 'deskripsi' => 'V12 monster.', 'nama_kategori' => 'V12 Grand Tourer'],
-            ['id_mobil' => 4, 'id_kategori' => 2, 'nama_mobil' => 'Roma', 'merk' => 'Ferrari', 'tahun' => 2023, 'plat_nomor' => 'B 25 RM', 'harga_sewa_per_hari' => 8000000.00, 'status' => 'tersedia', 'foto' => 'roma.jpg', 'deskripsi' => 'Dolce Vita design.', 'nama_kategori' => 'V12 Grand Tourer']
+            ['id_mobil' => 1, 'id_kategori' => 1, 'nama_mobil' => 'Avanza', 'merk' => 'Toyota', 'tahun' => 2023, 'plat_nomor' => 'DR 1902 SA', 'harga_sewa_per_hari' => 350000.00, 'status' => 'tersedia', 'foto' => 'avanza.jpg', 'deskripsi' => 'Toyota Avanza MPV Keluarga terfavorit.', 'nama_kategori' => 'MPV Keluarga'],
+            ['id_mobil' => 2, 'id_kategori' => 1, 'nama_mobil' => 'Xpander', 'merk' => 'Mitsubishi', 'tahun' => 2022, 'plat_nomor' => 'DR 8008 FT', 'harga_sewa_per_hari' => 450000.00, 'status' => 'tersedia', 'foto' => 'xpander.jpg', 'deskripsi' => 'Mitsubishi Xpander desain gagah kabin senyap.', 'nama_kategori' => 'MPV Keluarga'],
+            ['id_mobil' => 3, 'id_kategori' => 1, 'nama_mobil' => 'Kijang Innova', 'merk' => 'Toyota', 'tahun' => 2021, 'plat_nomor' => 'DR 8128 SF', 'harga_sewa_per_hari' => 650000.00, 'status' => 'tersedia', 'foto' => 'innova.jpg', 'deskripsi' => 'Innova Reborn kenyamanan kelas premium.', 'nama_kategori' => 'MPV Keluarga'],
+            ['id_mobil' => 4, 'id_kategori' => 1, 'nama_mobil' => 'All New Veloz', 'merk' => 'Toyota', 'tahun' => 2023, 'plat_nomor' => 'DR 2525 RM', 'harga_sewa_per_hari' => 450000.00, 'status' => 'tersedia', 'foto' => 'veloz.jpg', 'deskripsi' => 'Toyota All New Veloz dengan fitur TSS.', 'nama_kategori' => 'MPV Keluarga'],
+            ['id_mobil' => 5, 'id_kategori' => 2, 'nama_mobil' => 'Pajero Sport', 'merk' => 'Mitsubishi', 'tahun' => 2022, 'plat_nomor' => 'DR 1555 PS', 'harga_sewa_per_hari' => 850000.00, 'status' => 'tersedia', 'foto' => 'pajero.jpg', 'deskripsi' => 'SUV Tangguh Mitsubishi Pajero Sport.', 'nama_kategori' => 'SUV Tangguh'],
+            ['id_mobil' => 6, 'id_kategori' => 3, 'nama_mobil' => 'Jazz', 'merk' => 'Honda', 'tahun' => 2020, 'plat_nomor' => 'DR 9099 JZ', 'harga_sewa_per_hari' => 350000.00, 'status' => 'tersedia', 'foto' => 'jazz.jpg', 'deskripsi' => 'Honda Jazz Hatchback lincah sporty.', 'nama_kategori' => 'Hatchback / City Car'],
+            ['id_mobil' => 7, 'id_kategori' => 4, 'nama_mobil' => 'Civic Turbo', 'merk' => 'Honda', 'tahun' => 2023, 'plat_nomor' => 'DR 1000 CV', 'harga_sewa_per_hari' => 900000.00, 'status' => 'tersedia', 'foto' => 'civic.jpg', 'deskripsi' => 'Sedan mewah performa turbo responsif.', 'nama_kategori' => 'Sedan Elegan']
         ];
     }
     $cars = $_SESSION['mock_cars'];
@@ -275,7 +278,7 @@ require_once '../includes/header.php';
 
                     <div style="margin-bottom: var(--spacing-xs);">
                         <label class="form-label-dark" for="merk">Merk Pabrikan</label>
-                        <input type="text" name="merk" id="merk" class="form-input-dark" value="Ferrari" placeholder="Contoh: Ferrari" required>
+                        <input type="text" name="merk" id="merk" class="form-input-dark" value="Toyota" placeholder="Contoh: Toyota" required>
                     </div>
 
                     <div style="margin-bottom: var(--spacing-xs);">
@@ -305,7 +308,7 @@ require_once '../includes/header.php';
                     <div style="margin-bottom: var(--spacing-xs);">
                         <label class="form-label-dark" for="foto_name">Nama File Foto</label>
                         <input type="text" name="foto_name" id="foto_name" class="form-input-dark" value="roma.jpg" placeholder="Contoh: roma.jpg">
-                        <span style="font-size: 11px; color: var(--color-muted);">Gunakan: sf90.jpg, f8.jpg, 812.jpg, atau roma.jpg</span>
+                        <span style="font-size: 11px; color: var(--color-muted);">Gunakan: avanza.jpg, veloz.jpg, xpander.jpg, innova.jpg, pajero.jpg, jazz.jpg, atau civic.jpg</span>
                     </div>
 
                     <div style="margin-bottom: var(--spacing-sm);">

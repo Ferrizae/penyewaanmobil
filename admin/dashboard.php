@@ -56,7 +56,7 @@ try {
 
 // Fallback Mock Data if DB offline
 if (!$db_connected) {
-    $stats['total_cars'] = 4;
+    $stats['total_cars'] = 7;
     
     // Simulate from mock session rentals
     $mock_rentals = $_SESSION['mock_rentals'] ?? [];
@@ -74,7 +74,7 @@ if (!$db_connected) {
         $recent_rentals[] = [
             'id_sewa' => $mr['id_sewa'],
             'nama_mobil' => $mr['nama_mobil'],
-            'merk' => 'Ferrari',
+            'merk' => $mr['merk'] ?? 'Toyota',
             'nama_pelanggan' => $_SESSION['nama'] ?? 'Customer Demo',
             'tanggal_sewa' => $mr['tanggal_sewa'],
             'tanggal_kembali' => $mr['tanggal_kembali'],

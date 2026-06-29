@@ -54,9 +54,9 @@ if (!$db_connected) {
         });
         // Enrich keys
         foreach ($rentals as &$r) {
-            $r['merk'] = 'Ferrari';
-            $r['foto'] = strtolower(str_replace(' ', '', $r['nama_mobil'])) . '.jpg';
-            $r['plat_nomor'] = 'B ' . rand(10, 999) . ' RM';
+            $r['merk'] = isset($r['merk']) ? $r['merk'] : 'Toyota';
+            $r['foto'] = isset($r['foto']) ? $r['foto'] : 'avanza.jpg';
+            $r['plat_nomor'] = 'DR ' . rand(1000, 9999) . ' SA';
             $mock_pay = $_SESSION['mock_payments'][$r['id_sewa']] ?? null;
             $r['transaction_id'] = $mock_pay ? $mock_pay['transaction_id'] : '-';
             $r['status_pembayaran'] = $mock_pay ? $mock_pay['status_pembayaran'] : null;

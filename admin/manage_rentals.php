@@ -47,8 +47,8 @@ try {
 if (!$db_connected) {
     $rentals = $_SESSION['mock_rentals'] ?? [];
     foreach ($rentals as &$r) {
-        $r['merk'] = 'Ferrari';
-        $r['plat_nomor'] = 'B ' . rand(10, 999) . ' RM';
+        $r['merk'] = isset($r['merk']) ? $r['merk'] : 'Toyota';
+        $r['plat_nomor'] = isset($r['plat_nomor']) ? $r['plat_nomor'] : ('DR ' . rand(1000, 9999) . ' SA');
         $r['nama_pelanggan'] = $_SESSION['nama'] ?? 'Customer Demo';
         $r['no_hp'] = '081234567890';
         
@@ -245,8 +245,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'verify_payment') {
         // Re-enrich mock rentals
         $rentals = $_SESSION['mock_rentals'] ?? [];
         foreach ($rentals as &$r) {
-            $r['merk'] = 'Ferrari';
-            $r['plat_nomor'] = 'B ' . rand(10, 999) . ' RM';
+            $r['merk'] = isset($r['merk']) ? $r['merk'] : 'Toyota';
+            $r['plat_nomor'] = isset($r['plat_nomor']) ? $r['plat_nomor'] : ('DR ' . rand(1000, 9999) . ' SA');
             $r['nama_pelanggan'] = $_SESSION['nama'] ?? 'Customer Demo';
             $r['no_hp'] = '081234567890';
             

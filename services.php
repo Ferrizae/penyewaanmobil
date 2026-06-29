@@ -7,10 +7,10 @@ require_once 'includes/header.php';
 <!-- Banner Section -->
 <section class="section-band" style="background-color: var(--color-canvas); border-bottom: 1px solid var(--color-hairline); padding: var(--spacing-xl) 0;">
     <div class="grid-container">
-        <p class="caption-uppercase" style="color: var(--color-primary); margin-bottom: var(--spacing-xxs);">Kemewahan Tanpa Batas</p>
-        <h1 class="display-xl" style="margin-bottom: var(--spacing-sm);">LAYANAN PREMIUM</h1>
+        <p class="caption-uppercase" style="color: var(--color-primary); margin-bottom: var(--spacing-xxs);">Kenyamanan & Keandalan</p>
+        <h1 class="display-xl" style="margin-bottom: var(--spacing-sm);">LAYANAN UTAMA</h1>
         <p class="body-md" style="color: var(--color-body); max-width: 800px; font-size: 16px; line-height: 1.6;">
-            Di Scuderia Rental, kami mendefinisikan ulang kemewahan dan pelayanan. Nikmati layanan kelas atas yang dirancang khusus untuk memenuhi standar petualangan berkendara Anda.
+            Di Family Drive, kami menyajikan layanan transportasi terpercaya untuk memenuhi setiap rencana perjalanan Anda. Nikmati fleksibilitas sewa lepas kunci maupun dengan supir profesional yang handal.
         </p>
     </div>
 </section>
@@ -22,13 +22,13 @@ require_once 'includes/header.php';
             <!-- Service Item 1 -->
             <div class="card-photo-ferrari">
                 <div class="card-image-wrapper">
-                    <img src="assets/img/sf90.jpg" alt="Self-Drive Experience" class="card-image">
+                    <img src="assets/img/avanza.jpg" alt="Sewa Lepas Kunci (Self-Drive)" class="card-image">
                 </div>
                 <div class="card-info">
-                    <span class="caption-uppercase card-category">Pengalaman Murni</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Self-Drive Experience</h3>
+                    <span class="caption-uppercase card-category">Bebas & Fleksibel</span>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Sewa Lepas Kunci (Self-Drive)</h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
-                        Pegang kemudi supercar impian Anda sepenuhnya. Rasakan sensasi murni dari performa V8 Twin-Turbo atau V12 Naturally Aspirated legendaris di aspal jalan raya dengan fleksibilitas penuh.
+                        Pegang kendali penuh perjalanan Anda. Sewa mobil lepas kunci memberikan privasi maksimal bagi Anda dan keluarga untuk menjelajahi berbagai destinasi wisata dengan waktu yang sangat fleksibel.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Termasuk Asuransi</span>
@@ -40,13 +40,13 @@ require_once 'includes/header.php';
             <!-- Service Item 2 -->
             <div class="card-photo-ferrari">
                 <div class="card-image-wrapper">
-                    <img src="assets/img/roma.jpg" alt="VIP Chauffeur Service" class="card-image">
+                    <img src="assets/img/veloz.jpg" alt="Layanan Driver Profesional" class="card-image">
                 </div>
                 <div class="card-info">
                     <span class="caption-uppercase card-category">Kenyamanan Maksimal</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">VIP Chauffeur Service</h3>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Layanan Driver Profesional</h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
-                        Nikmati perjalanan dengan tenang di kursi penumpang. Sopir profesional kami yang terlatih dalam protokol keamanan dan kenyamanan siap mengantarkan Anda ke berbagai tujuan bisnis maupun acara formal.
+                        Duduk santai di kursi penumpang tanpa lelah berkendara. Supir profesional kami yang berpengalaman, ramah, dan menguasai rute jalan siap mengantarkan Anda sekeluarga dengan aman dan tepat waktu.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Driver Bersertifikat</span>
@@ -58,13 +58,13 @@ require_once 'includes/header.php';
             <!-- Service Item 3 -->
             <div class="card-photo-ferrari">
                 <div class="card-image-wrapper">
-                    <img src="assets/img/812.jpg" alt="Airport & Hotel Delivery" class="card-image">
+                    <img src="assets/img/innova.jpg" alt="Antar Jemput Bandara & Hotel" class="card-image">
                 </div>
                 <div class="card-info">
-                    <span class="caption-uppercase card-category">Layanan Concierge</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Airport & Hotel VIP Delivery</h3>
+                    <span class="caption-uppercase card-category">Tepat Waktu & Praktis</span>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Antar Jemput Bandara & Hotel</h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
-                        Kami menghargai waktu Anda. Layanan pengiriman langsung mengantarkan mobil pilihan Anda ke terminal kedatangan bandara atau lobi hotel mewah tempat Anda menginap dalam keadaan bersih dan siap melaju.
+                        Kami menghargai efisiensi waktu Anda. Layanan antar jemput langsung ke bandara atau lobi hotel memudahkan mobilitas perjalanan bisnis maupun liburan keluarga begitu Anda tiba di lokasi.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Pengiriman Instan</span>
@@ -76,13 +76,13 @@ require_once 'includes/header.php';
             <!-- Service Item 4 -->
             <div class="card-photo-ferrari">
                 <div class="card-image-wrapper">
-                    <img src="assets/img/f8.jpg" alt="Trackday & Fleet Event" class="card-image">
+                    <img src="assets/img/xpander.jpg" alt="Sewa Korporat & Acara Keluarga" class="card-image">
                 </div>
                 <div class="card-info">
-                    <span class="caption-uppercase card-category">Acara Khusus</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Track Day & Corporate Events</h3>
+                    <span class="caption-uppercase card-category">Solusi Transportasi</span>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Sewa Korporat & Acara Keluarga</h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
-                        Butuh armada supercar untuk peluncuran produk premium, pernikahan eksklusif, syuting media, atau ajang trackday privat di sirkuit? Kami menyediakan paket armada khusus lengkap dengan tim teknis di lokasi.
+                        Menyediakan paket sewa armada mobil bulanan untuk operasional instansi/perusahaan, serta paket penyewaan khusus rombongan keluarga untuk keperluan pernikahan, wisuda, maupun acara penting lainnya.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Kustomisasi Paket</span>

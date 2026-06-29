@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div style="background-color: var(--color-canvas-elevated); padding: var(--spacing-md); border: 1px solid var(--color-hairline); border-radius: var(--rounded-none);">
             
             <h2 class="display-md" style="margin-bottom: var(--spacing-xs); text-align: center; text-transform: uppercase; letter-spacing: 1px;">Daftar Akun Baru</h2>
-            <p style="color: var(--color-muted); font-size: 13px; text-align: center; margin-bottom: var(--spacing-md);">Mulai pengalaman berkendara mewah Anda bersama Scuderia Rental</p>
+            <p style="color: var(--color-muted); font-size: 13px; text-align: center; margin-bottom: var(--spacing-md);">Mulai perjalanan nyaman bersama keluarga Anda dengan Family Drive</p>
 
             <?php if (!empty($error_message)): ?>
                 <div class="alert-ferrari error">

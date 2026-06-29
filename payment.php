@@ -54,8 +54,8 @@ try {
 if (!$db_connected || !$rental) {
     if (isset($_SESSION['mock_rentals'][$id_sewa]) && $_SESSION['mock_rentals'][$id_sewa]['id_user'] == $_SESSION['id_user']) {
         $rental = $_SESSION['mock_rentals'][$id_sewa];
-        $rental['merk'] = 'Ferrari';
-        $rental['foto'] = strtolower(str_replace(' ', '', $rental['nama_mobil'])) . '.jpg';
+        $rental['merk'] = isset($rental['merk']) ? $rental['merk'] : 'Toyota';
+        $rental['foto'] = isset($rental['foto']) ? $rental['foto'] : 'avanza.jpg';
         $rental['plat_nomor'] = 'B ' . rand(10, 999) . ' RM';
         $rental['nama'] = $_SESSION['nama'];
         $rental['email'] = $_SESSION['email'];
@@ -195,7 +195,7 @@ require_once 'includes/header.php';
                             <!-- Elegant CSS-styled QR mockup -->
                             <div style="background-color: white; padding: var(--spacing-xs); display: inline-block; border-radius: 4px; border: 2px solid var(--color-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
                                 <div style="display: flex; flex-direction: column; align-items: center;">
-                                    <div style="font-weight: 700; color: #111; font-size: 12px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">QRIS Scuderia Rental</div>
+                                    <div style="font-weight: 700; color: #111; font-size: 12px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">QRIS Family Drive</div>
                                     <div style="font-size: 100px; line-height: 1; color: #111; padding: var(--spacing-xxs); border: 1px solid #ccc; margin: 4px 0;">
                                         <i class="fa-solid fa-qrcode"></i>
                                     </div>
@@ -212,13 +212,13 @@ require_once 'includes/header.php';
                                 <div style="background-color: rgba(255, 255, 255, 0.03); padding: var(--spacing-xxs) var(--spacing-xs); border-left: 3px solid var(--color-primary); margin-bottom: var(--spacing-xs);">
                                     <span style="font-weight: 600; color: var(--color-ink); display: block;">Bank Mandiri</span>
                                     <span style="font-size: 18px; font-family: monospace; font-weight: 700; color: var(--color-ink); letter-spacing: 1px;">137-00-9988-7766</span>
-                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT SCUDERIA RENTAL INDONESIA</span>
+                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT FAMILY DRIVE RENTAL INDONESIA</span>
                                 </div>
                             <?php else: // BCA fallback ?>
                                 <div style="background-color: rgba(255, 255, 255, 0.03); padding: var(--spacing-xxs) var(--spacing-xs); border-left: 3px solid var(--color-primary); margin-bottom: var(--spacing-xs);">
                                     <span style="font-weight: 600; color: var(--color-ink); display: block;">Bank BCA</span>
                                     <span style="font-size: 18px; font-family: monospace; font-weight: 700; color: var(--color-ink); letter-spacing: 1px;">8010-9988-77</span>
-                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT SCUDERIA RENTAL INDONESIA</span>
+                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT FAMILY DRIVE RENTAL INDONESIA</span>
                                 </div>
                             <?php endif; ?>
                             
@@ -271,7 +271,7 @@ require_once 'includes/header.php';
                             $file_ext = strtolower(pathinfo($payment['bukti_pembayaran'], PATHINFO_EXTENSION));
                             if ($file_ext === 'pdf'): ?>
                                 <div style="padding: var(--spacing-xs); background: #111; color: var(--color-ink); border: 1px solid var(--color-hairline);">
-                                    <i class="fa-solid fa-file-pdf" style="font-size: 32px; color: #da291c; margin-bottom: 4px;"></i>
+                                    <i class="fa-solid fa-file-pdf" style="font-size: 32px; color: var(--color-primary); margin-bottom: 4px;"></i>
                                     <span style="display: block; font-size: 12px; font-weight: 500;"><?= htmlspecialchars($payment['bukti_pembayaran']) ?></span>
                                     <a href="uploads/bukti_pembayaran/<?= htmlspecialchars($payment['bukti_pembayaran']) ?>" target="_blank" class="btn-outline-dark-ferrari" style="height: 28px; padding: 0 12px; font-size: 10px; margin-top: var(--spacing-xxs);">Lihat PDF</a>
                                 </div>

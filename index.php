@@ -1,6 +1,6 @@
 <?php
 // index.php
-$page_title = "Katalog Supercar Premium";
+$page_title = "Sewa Mobil Keluarga & Standar Terpercaya";
 require_once 'config/db.php';
 
 $cars = [];
@@ -37,64 +37,103 @@ try {
 // Fallback Mock Data if database is offline
 if (!$db_connected) {
     $categories = [
-        ['id_kategori' => 1, 'nama_kategori' => 'Supercar V8'],
-        ['id_kategori' => 2, 'nama_kategori' => 'V12 Grand Tourer'],
-        ['id_kategori' => 3, 'nama_kategori' => 'Hybrid Hypercar'],
-        ['id_kategori' => 4, 'nama_kategori' => 'Luxury SUV']
+        ['id_kategori' => 1, 'nama_kategori' => 'MPV Keluarga'],
+        ['id_kategori' => 2, 'nama_kategori' => 'SUV Tangguh'],
+        ['id_kategori' => 3, 'nama_kategori' => 'Hatchback / City Car'],
+        ['id_kategori' => 4, 'nama_kategori' => 'Sedan Elegan']
     ];
 
     $cars = [
         [
             'id_mobil' => 1,
-            'id_kategori' => 3,
-            'nama_mobil' => 'SF90 Stradale',
-            'merk' => 'Ferrari',
+            'id_kategori' => 1,
+            'nama_mobil' => 'Avanza',
+            'merk' => 'Toyota',
             'tahun' => 2023,
-            'plat_nomor' => 'B 90 SF',
-            'harga_sewa_per_hari' => 15000000.00,
+            'plat_nomor' => 'DR 1902 SA',
+            'harga_sewa_per_hari' => 350000.00,
             'status' => 'tersedia',
-            'foto' => 'sf90.jpg',
-            'deskripsi' => 'Plug-in Hybrid supercar featuring a twin-turbo V8 engine and three electric motors, generating a total of 1000 cv (986 hp). Pure performance redrawn for the future.',
-            'nama_kategori' => 'Hybrid Hypercar'
+            'foto' => 'avanza.jpg',
+            'deskripsi' => 'Toyota Avanza merupakan mobil MPV keluarga terfavorit di Indonesia, menawarkan kabin lapang dengan 7 kursi penumpang, AC double blower, dan kenyamanan berkendara terbaik untuk seluruh anggota keluarga.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         [
             'id_mobil' => 2,
             'id_kategori' => 1,
-            'nama_mobil' => 'F8 Tributo',
-            'merk' => 'Ferrari',
+            'nama_mobil' => 'Xpander',
+            'merk' => 'Mitsubishi',
             'tahun' => 2022,
-            'plat_nomor' => 'B 8 FT',
-            'harga_sewa_per_hari' => 10000000.00,
+            'plat_nomor' => 'DR 8008 FT',
+            'harga_sewa_per_hari' => 450000.00,
             'status' => 'tersedia',
-            'foto' => 'f8.jpg',
-            'deskripsi' => 'The tribute to the ultimate V8 engine. Delivering 720 cv of instant power without turbo lag, offering unmatched driver involvement on road and track.',
-            'nama_kategori' => 'Supercar V8'
+            'foto' => 'xpander.jpg',
+            'deskripsi' => 'Mitsubishi Xpander hadir dengan desain eksterior yang gagah, interior mewah senyap, suspensi stabil, serta ruang kabin lega yang ideal untuk petualangan keluarga Anda.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         [
             'id_mobil' => 3,
-            'id_kategori' => 2,
-            'nama_mobil' => '812 Superfast',
-            'merk' => 'Ferrari',
+            'id_kategori' => 1,
+            'nama_mobil' => 'Kijang Innova',
+            'merk' => 'Toyota',
             'tahun' => 2021,
-            'plat_nomor' => 'B 812 SF',
-            'harga_sewa_per_hari' => 12000000.00,
+            'plat_nomor' => 'DR 8128 SF',
+            'harga_sewa_per_hari' => 650000.00,
             'status' => 'tersedia',
-            'foto' => '812.jpg',
-            'deskripsi' => 'Front mid-mounted 6.5-liter naturally aspirated V12 engine. The fastest and most powerful road-going Ferrari of its era, outputting 800 cv of symphonic power.',
-            'nama_kategori' => 'V12 Grand Tourer'
+            'foto' => 'innova.jpg',
+            'deskripsi' => 'Toyota Kijang Innova Reborn menghadirkan kemewahan berkelas, kenyamanan maksimal dengan ruang kaki luas, performa mesin tangguh, dan sangat cocok untuk perjalanan jarak jauh.',
+            'nama_kategori' => 'MPV Keluarga'
         ],
         [
             'id_mobil' => 4,
-            'id_kategori' => 2,
-            'nama_mobil' => 'Roma',
-            'merk' => 'Ferrari',
+            'id_kategori' => 1,
+            'nama_mobil' => 'All New Veloz',
+            'merk' => 'Toyota',
             'tahun' => 2023,
-            'plat_nomor' => 'B 25 RM',
-            'harga_sewa_per_hari' => 8000000.00,
+            'plat_nomor' => 'DR 2525 RM',
+            'harga_sewa_per_hari' => 450000.00,
             'status' => 'tersedia',
-            'foto' => 'roma.jpg',
-            'deskripsi' => 'La Nuova Dolce Vita. A timeless, elegant, and minimal front-engined V8 coupe designed to represent the carefree, pleasurable way of life in Rome during the 1950s and 60s.',
-            'nama_kategori' => 'V12 Grand Tourer'
+            'foto' => 'veloz.jpg',
+            'deskripsi' => 'Toyota All New Veloz menyuguhkan fitur keselamatan mutakhir Toyota Safety Sense, desain modern premium, kabin fleksibel, dan kenyamanan prima untuk mobilitas urban keluarga.',
+            'nama_kategori' => 'MPV Keluarga'
+        ],
+        [
+            'id_mobil' => 5,
+            'id_kategori' => 2,
+            'nama_mobil' => 'Pajero Sport',
+            'merk' => 'Mitsubishi',
+            'tahun' => 2022,
+            'plat_nomor' => 'DR 1555 PS',
+            'harga_sewa_per_hari' => 850000.00,
+            'status' => 'tersedia',
+            'foto' => 'pajero.jpg',
+            'deskripsi' => 'Mitsubishi Pajero Sport adalah SUV premium dengan mesin tangguh, ground clearance tinggi, fitur keselamatan lengkap, cocok untuk menaklukkan segala kondisi jalan dengan gagah.',
+            'nama_kategori' => 'SUV Tangguh'
+        ],
+        [
+            'id_mobil' => 6,
+            'id_kategori' => 3,
+            'nama_mobil' => 'Jazz',
+            'merk' => 'Honda',
+            'tahun' => 2020,
+            'plat_nomor' => 'DR 9099 JZ',
+            'harga_sewa_per_hari' => 350000.00,
+            'status' => 'tersedia',
+            'foto' => 'jazz.jpg',
+            'deskripsi' => 'Honda Jazz merupakan hatchback lincah nan sporty, kabin fleksibel dengan sistem Ultra Seat, efisiensi bahan bakar tinggi, sangat ideal untuk bermanuver di jalan perkotaan.',
+            'nama_kategori' => 'Hatchback / City Car'
+        ],
+        [
+            'id_mobil' => 7,
+            'id_kategori' => 4,
+            'nama_mobil' => 'Civic Turbo',
+            'merk' => 'Honda',
+            'tahun' => 2023,
+            'plat_nomor' => 'DR 1000 CV',
+            'harga_sewa_per_hari' => 900000.00,
+            'status' => 'tersedia',
+            'foto' => 'civic.jpg',
+            'deskripsi' => 'Honda Civic Sedan menyajikan desain eksterior agresif premium, kenyamanan berkendara tingkat tinggi, performa mesin turbo yang responsif, mencerminkan prestise dan gaya hidup modern.',
+            'nama_kategori' => 'Sedan Elegan'
         ]
     ];
 
@@ -112,13 +151,13 @@ require_once 'includes/header.php';
 
 <!-- Cinematic Hero Section -->
 <section class="hero-viewport">
-    <img src="assets/img/hero_bg.jpg" alt="Ferrari racetrack sunset" class="hero-image-bg">
+    <img src="assets/img/hero_bg.jpg" alt="Family road trip" class="hero-image-bg">
     <div class="hero-content">
         <div class="hero-text-container">
-            <p class="caption-uppercase hero-tagline">Premium Car Rental Experience</p>
-            <h1 class="display-mega">RACING IS IN OUR DNA</h1>
+            <p class="caption-uppercase hero-tagline">Sewa Mobil Keluarga & Standar Terpercaya</p>
+            <h1 class="display-mega">PERJALANAN NYAMAN BERSAMA KELUARGA</h1>
             <p class="body-md" style="margin-top: var(--spacing-xs); color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.6;">
-                Nikmati kekuatan sejati supercar legendaris. Scuderia Rental menyewakan kendaraan dengan performa maksimal dan presisi sempurna untuk perjalanan istimewa Anda.
+                Kenyamanan dan keamanan perjalanan Anda serta keluarga adalah prioritas utama kami. Family Drive menyediakan berbagai pilihan mobil MPV, SUV, dan sedan prima untuk liburan maupun kebutuhan harian Anda.
             </p>
             <div class="hero-buttons">
                 <a href="#katalog-armada" class="btn-primary-ferrari">Lihat Katalog</a>
@@ -128,12 +167,12 @@ require_once 'includes/header.php';
     </div>
 </section>
 
-<!-- Livery Band (Accent Red Band) -->
+<!-- Livery Band (Accent Blue Band) -->
 <section class="section-band livery" style="padding: var(--spacing-md) 0; text-align: center;">
     <div class="grid-container">
         <p class="caption-uppercase" style="letter-spacing: 2px; font-weight: 700;">
-            <i class="fa-solid fa-gauge-high" style="margin-right: 8px;"></i>
-            Koleksi Terbatas Supercar Eksklusif Hanya di Scuderia Rental
+            <i class="fa-solid fa-car-side" style="margin-right: 8px;"></i>
+            Solusi Sewa Mobil Keluarga Nyaman & Murah Hanya di Family Drive
         </p>
     </div>
 </section>
@@ -218,10 +257,10 @@ require_once 'includes/header.php';
 <!-- Call To Action Band -->
 <section class="section-band" style="background-color: var(--color-canvas-elevated); border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline);">
     <div class="grid-container" style="text-align: center; max-width: 800px;">
-        <p class="caption-uppercase" style="color: var(--color-primary); margin-bottom: var(--spacing-xxs);">Pengalaman Berkendara Terbaik</p>
-        <h2 class="display-lg" style="margin-bottom: var(--spacing-sm);">Siap Merasakan Sensasi Kecepatan Sejati?</h2>
+        <p class="caption-uppercase" style="color: var(--color-primary); margin-bottom: var(--spacing-xxs);">Perjalanan Terbaik Bersama Kami</p>
+        <h2 class="display-lg" style="margin-bottom: var(--spacing-sm);">Siap Memulai Perjalanan Nyaman Bersama Keluarga?</h2>
         <p class="body-md" style="margin-bottom: var(--spacing-md); color: var(--color-body); line-height: 1.6;">
-            Daftar sekarang untuk memesan kendaraan impian Anda. Layanan pelanggan 24/7 kami siap membantu mempersiapkan perjalanan premium Anda.
+            Daftar sekarang untuk memesan kendaraan keluarga pilihan Anda. Layanan pelanggan 24/7 kami siap membantu mempersiapkan perjalanan terbaik untuk Anda dan keluarga.
         </p>
         <a href="register.php" class="btn-primary-ferrari">Daftar Akun Sekarang</a>
     </div>
