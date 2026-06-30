@@ -151,11 +151,11 @@ require_once 'includes/header.php';
 
 <!-- Cinematic Hero Section -->
 <section class="hero-viewport">
-    <img src="assets/img/hero_bg.jpg" alt="Family road trip" class="hero-image-bg">
+    <img src="assets/img/bg.png" alt="Family road trip" class="hero-image-bg">
     <div class="hero-content">
         <div class="hero-text-container">
             <p class="caption-uppercase hero-tagline">Sewa Mobil Keluarga & Standar Terpercaya</p>
-            <h1 class="display-mega">PERJALANAN NYAMAN BERSAMA KELUARGA</h1>
+            <h1 class="display-mega">PERJALANAN NYAMAN SEKELUARGA</h1>
             <p class="body-md" style="margin-top: var(--spacing-xs); color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.6;">
                 Kenyamanan dan keamanan perjalanan Anda serta keluarga adalah prioritas utama kami. Family Drive menyediakan berbagai pilihan mobil MPV, SUV, dan sedan prima untuk liburan maupun kebutuhan harian Anda.
             </p>
