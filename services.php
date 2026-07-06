@@ -21,72 +21,88 @@ require_once 'includes/header.php';
         <div class="grid-2-col">
             <!-- Service Item 1 -->
             <div class="card-photo-ferrari">
-                <div class="card-image-wrapper">
-                    <img src="assets/img/avanza.jpg" alt="Sewa Lepas Kunci (Self-Drive)" class="card-image">
-                </div>
+                <a href="service_detail.php?type=lepas-kunci" style="display: block; color: inherit;">
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/avanza.jpg" alt="Sewa Lepas Kunci (Self-Drive)" class="card-image">
+                    </div>
+                </a>
                 <div class="card-info">
                     <span class="caption-uppercase card-category">Bebas & Fleksibel</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Sewa Lepas Kunci (Self-Drive)</h3>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">
+                        <a href="service_detail.php?type=lepas-kunci" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">Sewa Lepas Kunci (Self-Drive)</a>
+                    </h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
                         Pegang kendali penuh perjalanan Anda. Sewa mobil lepas kunci memberikan privasi maksimal bagi Anda dan keluarga untuk menjelajahi berbagai destinasi wisata dengan waktu yang sangat fleksibel.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Termasuk Asuransi</span>
-                        <a href="index.php" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px;">Pesan Sekarang</a>
+                        <a href="service_detail.php?type=lepas-kunci" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">Detail Layanan <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Service Item 2 -->
             <div class="card-photo-ferrari">
-                <div class="card-image-wrapper">
-                    <img src="assets/img/veloz.jpg" alt="Layanan Driver Profesional" class="card-image">
-                </div>
+                <a href="service_detail.php?type=driver" style="display: block; color: inherit;">
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/veloz.jpg" alt="Layanan Driver Profesional" class="card-image">
+                    </div>
+                </a>
                 <div class="card-info">
                     <span class="caption-uppercase card-category">Kenyamanan Maksimal</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Layanan Driver Profesional</h3>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">
+                        <a href="service_detail.php?type=driver" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">Layanan Driver Profesional</a>
+                    </h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
                         Duduk santai di kursi penumpang tanpa lelah berkendara. Supir profesional kami yang berpengalaman, ramah, dan menguasai rute jalan siap mengantarkan Anda sekeluarga dengan aman dan tepat waktu.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Driver Bersertifikat</span>
-                        <a href="index.php" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px;">Hubungi Kontak</a>
+                        <a href="service_detail.php?type=driver" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">Detail Layanan <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Service Item 3 -->
             <div class="card-photo-ferrari">
-                <div class="card-image-wrapper">
-                    <img src="assets/img/innova.jpg" alt="Antar Jemput Bandara & Hotel" class="card-image">
-                </div>
+                <a href="service_detail.php?type=antar-jemput" style="display: block; color: inherit;">
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/innova.jpg" alt="Antar Jemput Bandara & Hotel" class="card-image">
+                    </div>
+                </a>
                 <div class="card-info">
                     <span class="caption-uppercase card-category">Tepat Waktu & Praktis</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Antar Jemput Bandara & Hotel</h3>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">
+                        <a href="service_detail.php?type=antar-jemput" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">Antar Jemput Bandara & Hotel</a>
+                    </h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
                         Kami menghargai efisiensi waktu Anda. Layanan antar jemput langsung ke bandara atau lobi hotel memudahkan mobilitas perjalanan bisnis maupun liburan keluarga begitu Anda tiba di lokasi.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Pengiriman Instan</span>
-                        <a href="index.php" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px;">Pesan Sekarang</a>
+                        <a href="service_detail.php?type=antar-jemput" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">Detail Layanan <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Service Item 4 -->
             <div class="card-photo-ferrari">
-                <div class="card-image-wrapper">
-                    <img src="assets/img/xpander.jpg" alt="Sewa Korporat & Acara Keluarga" class="card-image">
-                </div>
+                <a href="service_detail.php?type=korporat" style="display: block; color: inherit;">
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/xpander.jpg" alt="Sewa Korporat & Acara Keluarga" class="card-image">
+                    </div>
+                </a>
                 <div class="card-info">
                     <span class="caption-uppercase card-category">Solusi Transportasi</span>
-                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">Sewa Korporat & Acara Keluarga</h3>
+                    <h3 class="title-md card-title" style="margin-bottom: var(--spacing-xs); font-size: 20px;">
+                        <a href="service_detail.php?type=korporat" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">Sewa Korporat & Acara Keluarga</a>
+                    </h3>
                     <p class="body-md card-desc" style="line-height: 1.6;">
                         Menyediakan paket sewa armada mobil bulanan untuk operasional instansi/perusahaan, serta paket penyewaan khusus rombongan keluarga untuk keperluan pernikahan, wisuda, maupun acara penting lainnya.
                     </p>
                     <div style="margin-top: var(--spacing-xs); padding-top: var(--spacing-xs); border-top: 1px solid var(--color-hairline); display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted);"><i class="fa-solid fa-check-double" style="color: var(--color-primary); margin-right: 4px;"></i> Kustomisasi Paket</span>
-                        <a href="index.php" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px;">Ajukan Proposal</a>
+                        <a href="service_detail.php?type=korporat" class="btn-outline-dark-ferrari" style="height: 36px; padding: 0 var(--spacing-xs); font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">Detail Layanan <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i></a>
                     </div>
                 </div>
             </div>
