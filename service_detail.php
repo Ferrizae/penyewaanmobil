@@ -29,7 +29,7 @@ $services_data = [
             ['q' => 'Bagaimana jika terjadi keterlambatan pengembalian?', 'a' => 'Keterlambatan pengembalian dikenakan biaya tambahan per jam (overtime) sebesar 10% dari tarif sewa harian. Keterlambatan lebih dari 3 jam akan dihitung sebagai sewa 1 hari penuh.'],
         ],
         'cta_text' => 'Lihat Katalog Mobil',
-        'cta_link' => 'index.php',
+        'cta_link' => 'index.php#katalog-armada',
         'wa_message' => 'Halo Family Drive, saya ingin menyewa mobil lepas kunci.'
     ],
     'driver' => [
@@ -265,7 +265,7 @@ require_once 'includes/header.php';
                     <div style="display: flex; flex-direction: column; gap: var(--spacing-xs);">
                         <!-- Direct Catalog CTA -->
                         <?php if ($type === 'lepas-kunci'): ?>
-                        <a href="<?= htmlspecialchars($service['cta_link']) ?>" class="btn-primary-ferrari" style="width: 100%; text-align: center; gap: 8px;">
+                        <a href="<?= $base_url ?><?= htmlspecialchars($service['cta_link']) ?>" class="btn-primary-ferrari" style="width: 100%; text-align: center; gap: 8px;">
                             <i class="fa-solid fa-car"></i> <?= htmlspecialchars($service['cta_text']) ?>
                         </a>
                         <?php endif; ?>
