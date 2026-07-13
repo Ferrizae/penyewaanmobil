@@ -161,7 +161,9 @@ require_once 'includes/header.php';
             </p>
             <div class="hero-buttons">
                 <a href="#katalog-armada" class="btn-primary-ferrari">Lihat Katalog</a>
-                <a href="register.php" class="btn-outline-dark-ferrari">Daftar Akun</a>
+                <?php if (!isset($_SESSION['role'])): ?>
+                    <a href="register.php" class="btn-outline-dark-ferrari">Daftar Akun</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -255,6 +257,7 @@ require_once 'includes/header.php';
 </section>
 
 <!-- Call To Action Band -->
+<?php if (!isset($_SESSION['role'])): ?>
 <section class="section-band" style="background-color: var(--color-canvas-elevated); border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline);">
     <div class="grid-container" style="text-align: center; max-width: 800px;">
         <p class="caption-uppercase" style="color: var(--color-primary); margin-bottom: var(--spacing-xxs);">Perjalanan Terbaik Bersama Kami</p>
@@ -265,5 +268,6 @@ require_once 'includes/header.php';
         <a href="register.php" class="btn-primary-ferrari">Daftar Akun Sekarang</a>
     </div>
 </section>
+<?php endif; ?>
 
 <?php require_once 'includes/footer.php'; ?>
