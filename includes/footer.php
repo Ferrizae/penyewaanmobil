@@ -1,6 +1,27 @@
 <?php
 // includes/footer.php
 $base_url = "/penyewaanmobil/";
+
+// Try to fetch categories dynamically if PDO exists
+$footer_categories = [];
+try {
+    if (isset($pdo)) {
+        $stmt_footer = $pdo->query("SELECT * FROM kategori_mobil");
+        $footer_categories = $stmt_footer->fetchAll();
+    }
+} catch (Exception $e) {
+    // Ignore error, fallback below
+}
+
+// Fallback if not loaded
+if (empty($footer_categories)) {
+    $footer_categories = [
+        ['id_kategori' => 1, 'nama_kategori' => 'MPV Keluarga'],
+        ['id_kategori' => 2, 'nama_kategori' => 'SUV Tangguh'],
+        ['id_kategori' => 3, 'nama_kategori' => 'Hatchback / City Car'],
+        ['id_kategori' => 4, 'nama_kategori' => 'Sedan Elegan']
+    ];
+}
 ?>
 </main>
 
@@ -18,10 +39,10 @@ $base_url = "/penyewaanmobil/";
             <div>
                 <h4 class="footer-col-title">Katalog</h4>
                 <ul class="footer-links">
-                    <li><a href="<?= $base_url ?>index.php">Semua Mobil</a></li>
-                    <li><a href="<?= $base_url ?>index.php?kategori=1">MPV Keluarga</a></li>
-                    <li><a href="<?= $base_url ?>index.php?kategori=2">SUV Tangguh</a></li>
-                    <li><a href="<?= $base_url ?>index.php?kategori=3">Hatchback / City Car</a></li>
+                    <li><a href="<?= $base_url ?>index.php#katalog-armada">Semua Mobil</a></li>
+                    <?php foreach ($footer_categories as $cat): ?>
+                        <li><a href="<?= $base_url ?>index.php?kategori=<?= $cat['id_kategori'] ?>#katalog-armada"><?= htmlspecialchars($cat['nama_kategori']) ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div>

@@ -61,6 +61,14 @@ if (!$db_connected) {
 if (isset($_POST['action']) && $_POST['action'] === 'add') {
     $nama_mobil = trim($_POST['nama_mobil']);
     $merk = trim($_POST['merk']);
+    
+    // Normalize: if the user included the brand at the beginning of the model name, strip it to prevent duplicate rendering
+    if (!empty($merk) && stripos($nama_mobil, $merk) === 0) {
+        $stripped_name = trim(substr($nama_mobil, strlen($merk)));
+        if ($stripped_name !== '') {
+            $nama_mobil = $stripped_name;
+        }
+    }
     $tahun = (int)$_POST['tahun'];
     $plat_nomor = trim($_POST['plat_nomor']);
     $harga_sewa_per_hari = (float)$_POST['harga_sewa_per_hari'];
@@ -233,7 +241,7 @@ require_once '../includes/header.php';
                                         <img src="../assets/img/<?= htmlspecialchars($c['foto']) ?>" alt="<?= htmlspecialchars($c['nama_mobil']) ?>" style="width: 70px; height: 40px; object-fit: cover; border: 1px solid var(--color-hairline);">
                                     </td>
                                     <td>
-                                        <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars($c['merk'] . ' ' . $c['nama_mobil']) ?></div>
+                                        <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars((!empty($c['merk']) && stripos($c['nama_mobil'], $c['merk']) === 0) ? $c['nama_mobil'] : $c['merk'] . ' ' . $c['nama_mobil']) ?></div>
                                         <span style="font-size: 11px; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.5px;"><?= htmlspecialchars($c['nama_kategori']) ?></span>
                                     </td>
                                     <td>

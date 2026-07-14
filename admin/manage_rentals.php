@@ -326,7 +326,7 @@ require_once '../includes/header.php';
                             </div>
                             <div style="margin-bottom: var(--spacing-xs);">
                                 <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block;">Mobil</span>
-                                <span style="color: var(--color-ink); font-weight: 600;"><?= htmlspecialchars($selected_rental['merk'] . ' ' . $selected_rental['nama_mobil']) ?> (<?= htmlspecialchars($selected_rental['plat_nomor']) ?>)</span>
+                                <span style="color: var(--color-ink); font-weight: 600;"><?= htmlspecialchars((!empty($selected_rental['merk']) && stripos($selected_rental['nama_mobil'], $selected_rental['merk']) === 0) ? $selected_rental['nama_mobil'] : $selected_rental['merk'] . ' ' . $selected_rental['nama_mobil']) ?> (<?= htmlspecialchars($selected_rental['plat_nomor']) ?>)</span>
                             </div>
                             <div style="margin-bottom: var(--spacing-xs);">
                                 <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block;">Metode Pembayaran</span>
@@ -394,7 +394,7 @@ require_once '../includes/header.php';
                         <div class="grid-3-col" style="margin-bottom: var(--spacing-xs);">
                             <div>
                                 <label class="form-label-dark">Mobil</label>
-                                <div style="color: var(--color-ink); font-weight: 600; padding: 10px 0;"><?= htmlspecialchars($selected_rental['merk'] . ' ' . $selected_rental['nama_mobil']) ?></div>
+                                <div style="color: var(--color-ink); font-weight: 600; padding: 10px 0;"><?= htmlspecialchars((!empty($selected_rental['merk']) && stripos($selected_rental['nama_mobil'], $selected_rental['merk']) === 0) ? $selected_rental['nama_mobil'] : $selected_rental['merk'] . ' ' . $selected_rental['nama_mobil']) ?></div>
                             </div>
                             <div>
                                 <label class="form-label-dark">Penyewa</label>
@@ -467,7 +467,7 @@ require_once '../includes/header.php';
                                         <span style="font-size: 11px; color: var(--color-muted);"><?= htmlspecialchars($r['no_hp']) ?></span>
                                     </td>
                                     <td>
-                                        <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars($r['merk'] . ' ' . $r['nama_mobil']) ?></div>
+                                        <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars((!empty($r['merk']) && stripos($r['nama_mobil'], $r['merk']) === 0) ? $r['nama_mobil'] : $r['merk'] . ' ' . $r['nama_mobil']) ?></div>
                                         <span style="font-size: 11px; color: var(--color-muted);"><?= htmlspecialchars($r['plat_nomor']) ?></span>
                                     </td>
                                     <td style="font-size: 13px;">

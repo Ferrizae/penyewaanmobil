@@ -130,7 +130,7 @@ $specs = [
 
 $car_spec = isset($specs[$car['nama_mobil']]) ? $specs[$car['nama_mobil']] : ['seats' => '5-7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin / Diesel', 'engine_cap' => '1.500 cc'];
 
-$page_title = $car['merk'] . " " . $car['nama_mobil'];
+$page_title = (!empty($car['merk']) && stripos($car['nama_mobil'], $car['merk']) === 0) ? $car['nama_mobil'] : $car['merk'] . " " . $car['nama_mobil'];
 require_once 'includes/header.php';
 ?>
 
@@ -176,7 +176,7 @@ require_once 'includes/header.php';
                 
                 <span class="caption-uppercase" style="color: var(--color-primary);"><?= htmlspecialchars($car['nama_kategori']) ?></span>
                 <h2 class="display-md" style="margin-top: var(--spacing-xxxs); margin-bottom: var(--spacing-xxs); color: var(--color-ink);">
-                    <?= htmlspecialchars($car['merk'] . ' ' . $car['nama_mobil']) ?>
+                    <?= htmlspecialchars((!empty($car['merk']) && stripos($car['nama_mobil'], $car['merk']) === 0) ? $car['nama_mobil'] : $car['merk'] . ' ' . $car['nama_mobil']) ?>
                 </h2>
                 
                 <div style="display: flex; gap: var(--spacing-xs); align-items: center; margin-bottom: var(--spacing-sm);">

@@ -133,7 +133,7 @@ require_once 'includes/header.php';
                 <div style="display: flex; gap: var(--spacing-xs); align-items: center; margin-bottom: var(--spacing-sm);">
                     <img src="assets/img/<?= htmlspecialchars($rental['foto']) ?>" alt="<?= htmlspecialchars($rental['nama_mobil']) ?>" style="width: 100px; height: 60px; object-fit: cover; border: 1px solid var(--color-hairline);">
                     <div>
-                        <h4 class="title-sm" style="color: var(--color-ink);"><?= htmlspecialchars($rental['merk'] . ' ' . $rental['nama_mobil']) ?></h4>
+                        <h4 class="title-sm" style="color: var(--color-ink);"><?= htmlspecialchars((!empty($rental['merk']) && stripos($rental['nama_mobil'], $rental['merk']) === 0) ? $rental['nama_mobil'] : $rental['merk'] . ' ' . $rental['nama_mobil']) ?></h4>
                         <span style="font-size: 13px; color: var(--color-muted);">Tarif Sewa: Rp <?= number_format($rental['harga_sewa_per_hari'], 0, ',', '.') ?> / hari</span>
                     </div>
                 </div>

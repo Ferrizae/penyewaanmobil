@@ -230,7 +230,7 @@ require_once 'includes/header.php';
                         <div class="card-info">
                             <span class="caption-uppercase card-category"><?= htmlspecialchars($car['nama_kategori']) ?></span>
                             <div class="card-title-row">
-                                <h3 class="title-md card-title"><?= htmlspecialchars($car['merk'] . ' ' . $car['nama_mobil']) ?></h3>
+                                <h3 class="title-md card-title"><?= htmlspecialchars((!empty($car['merk']) && stripos($car['nama_mobil'], $car['merk']) === 0) ? $car['nama_mobil'] : $car['merk'] . ' ' . $car['nama_mobil']) ?></h3>
                                 <span class="card-price">Rp <?= number_format($car['harga_sewa_per_hari'], 0, ',', '.') ?><span style="font-size: 11px; font-weight: 400; color: var(--color-body);">/hari</span></span>
                             </div>
                             <p class="body-md card-desc"><?= htmlspecialchars($car['deskripsi']) ?></p>

@@ -122,7 +122,7 @@ require_once 'includes/header.php';
                                     <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
                                         <img src="assets/img/<?= htmlspecialchars($rent['foto']) ?>" alt="<?= htmlspecialchars($rent['nama_mobil']) ?>" style="width: 60px; height: 36px; object-fit: cover; border: 1px solid var(--color-hairline);">
                                         <div>
-                                            <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars($rent['merk'] . ' ' . $rent['nama_mobil']) ?></div>
+                                            <div style="font-weight: 600; color: var(--color-ink);"><?= htmlspecialchars((!empty($rent['merk']) && stripos($rent['nama_mobil'], $rent['merk']) === 0) ? $rent['nama_mobil'] : $rent['merk'] . ' ' . $rent['nama_mobil']) ?></div>
                                             <span style="font-size: 11px; color: var(--color-muted);"><?= htmlspecialchars($rent['plat_nomor']) ?></span>
                                         </div>
                                     </div>
