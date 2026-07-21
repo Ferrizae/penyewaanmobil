@@ -1,6 +1,7 @@
 <?php
 // payment.php
 require_once 'config/db.php';
+require_once 'config/midtrans.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -143,7 +144,7 @@ require_once 'includes/header.php';
             <i class="fa-solid fa-arrow-left"></i> Kembali ke Riwayat Sewa
         </a>
 
-        <h2 class="display-lg" style="margin-bottom: var(--spacing-sm); text-transform: uppercase;">Prosedur Pembayaran</h2>
+        <h2 class="display-lg" style="margin-bottom: var(--spacing-sm); text-transform: uppercase;">Status Pembayaran</h2>
 
         <?php if (!empty($success_msg)): ?>
             <div class="alert-ferrari success">
@@ -161,85 +162,49 @@ require_once 'includes/header.php';
 
         <div class="grid-2-col">
             
-            <!-- Payment Instructions Column -->
+            <!-- Midtrans Payment Gateway Box -->
             <div style="background-color: var(--color-canvas-elevated); padding: var(--spacing-md); border: 1px solid var(--color-hairline); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
-                    <h3 class="title-sm" style="border-bottom: 1px solid var(--color-hairline); padding-bottom: var(--spacing-xxs); margin-bottom: var(--spacing-xs); text-transform: uppercase;">Instruksi Pembayaran</h3>
+                    <h3 class="title-sm" style="border-bottom: 1px solid var(--color-hairline); padding-bottom: var(--spacing-xxs); margin-bottom: var(--spacing-xs); text-transform: uppercase; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Midtrans Payment</span>
+                        <span class="badge-pill-ferrari" style="border-color: var(--color-semantic-warning); color: var(--color-semantic-warning); font-size: 11px;">Pending</span>
+                    </h3>
                     
                     <div style="margin-bottom: var(--spacing-sm);">
-                        <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Metode Pembayaran</span>
+                        <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Gerbang Pembayaran Official</span>
                         <div style="font-size: 16px; font-weight: 600; color: var(--color-ink); display: flex; align-items: center; gap: 8px;">
-                            <?php 
-                            $metode = $payment['metode_pembayaran'] ?? 'Transfer Bank';
-                            if (stripos($metode, 'card') !== false) {
-                                echo '<i class="fa-solid fa-credit-card" style="color: var(--color-primary);"></i> ' . htmlspecialchars($metode);
-                            } elseif (stripos($metode, 'qris') !== false || stripos($metode, 'wallet') !== false) {
-                                echo '<i class="fa-solid fa-qrcode" style="color: var(--color-primary);"></i> ' . htmlspecialchars($metode);
-                            } else {
-                                echo '<i class="fa-solid fa-building-columns" style="color: var(--color-primary);"></i> ' . htmlspecialchars($metode);
-                            }
-                            ?>
+                            <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
+                            <?= htmlspecialchars($payment['metode_pembayaran'] ?? 'Midtrans Snap Gateway') ?>
                         </div>
                     </div>
 
                     <div style="margin-bottom: var(--spacing-md); padding: var(--spacing-xs); background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--color-hairline);">
-                        <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Total Tagihan</span>
+                        <span style="font-size: 11px; color: var(--color-muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Total Tagihan Pembayaran</span>
                         <span style="font-size: 28px; font-weight: 700; color: var(--color-primary);">Rp <?= number_format($rental['total_harga'], 0, ',', '.') ?></span>
-                        <span style="font-size: 11px; color: var(--color-body); display: block; margin-top: 4px;">*Harap transfer dengan nominal yang presisi.</span>
+                        <?php if (!empty($payment['transaction_id'])): ?>
+                            <span style="font-size: 11px; color: var(--color-muted); display: block; margin-top: 4px; font-family: monospace;">Order ID: <?= htmlspecialchars($payment['transaction_id']) ?></span>
+                        <?php endif; ?>
                     </div>
 
-                    <!-- Payment details based on method -->
-                    <?php if (stripos($metode, 'qris') !== false || stripos($metode, 'wallet') !== false): ?>
-                        <div style="text-align: center; margin-bottom: var(--spacing-sm);">
-                            <p style="font-size: 13px; color: var(--color-body); margin-bottom: var(--spacing-xs);">Scan Kode QRIS di bawah menggunakan aplikasi e-wallet Anda:</p>
-                            <!-- Elegant CSS-styled QR mockup -->
-                            <div style="background-color: white; padding: var(--spacing-xs); display: inline-block; border-radius: 4px; border: 2px solid var(--color-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-                                <div style="display: flex; flex-direction: column; align-items: center;">
-                                    <div style="font-weight: 700; color: #111; font-size: 12px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">QRIS Family Drive</div>
-                                    <div style="font-size: 100px; line-height: 1; color: #111; padding: var(--spacing-xxs); border: 1px solid #ccc; margin: 4px 0;">
-                                        <i class="fa-solid fa-qrcode"></i>
-                                    </div>
-                                    <div style="font-size: 9px; color: #666; font-weight: 600;">NMID: ID1020304050607</div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php else: ?>
-                        <!-- Default to Bank Transfer info -->
-                        <div style="font-size: 13px; color: var(--color-body); line-height: 1.6;">
-                            <p style="margin-bottom: var(--spacing-xxs);">Silakan melakukan transfer dana ke rekening resmi kami:</p>
-                            
-                            <?php if (stripos($metode, 'mandiri') !== false): ?>
-                                <div style="background-color: rgba(255, 255, 255, 0.03); padding: var(--spacing-xxs) var(--spacing-xs); border-left: 3px solid var(--color-primary); margin-bottom: var(--spacing-xs);">
-                                    <span style="font-weight: 600; color: var(--color-ink); display: block;">Bank Mandiri</span>
-                                    <span style="font-size: 18px; font-family: monospace; font-weight: 700; color: var(--color-ink); letter-spacing: 1px;">137-00-9988-7766</span>
-                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT FAMILY DRIVE RENTAL INDONESIA</span>
-                                </div>
-                            <?php else: // BCA fallback ?>
-                                <div style="background-color: rgba(255, 255, 255, 0.03); padding: var(--spacing-xxs) var(--spacing-xs); border-left: 3px solid var(--color-primary); margin-bottom: var(--spacing-xs);">
-                                    <span style="font-weight: 600; color: var(--color-ink); display: block;">Bank BCA</span>
-                                    <span style="font-size: 18px; font-family: monospace; font-weight: 700; color: var(--color-ink); letter-spacing: 1px;">8010-9988-77</span>
-                                    <span style="display: block; font-size: 11px; color: var(--color-muted);">a/n PT FAMILY DRIVE RENTAL INDONESIA</span>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <ol style="padding-left: var(--spacing-xs); margin-bottom: var(--spacing-xs); display: flex; flex-direction: column; gap: 4px;">
-                                <li>Gunakan ATM, Mobile Banking, atau Internet Banking Anda.</li>
-                                <li>Masukkan nomor rekening yang tercantum di atas.</li>
-                                <li>Masukkan jumlah bayar yang **SAMA PERSIS** dengan total tagihan.</li>
-                                <li>Simpan bukti transaksi setelah transfer berhasil diselesaikan.</li>
-                            </ol>
-                        </div>
-                    <?php endif; ?>
+                    <div style="font-size: 13px; color: var(--color-body); line-height: 1.6; margin-bottom: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);">Anda dapat menyelesaikan pembayaran online secara otomatis menggunakan <strong>Midtrans Payment Gateway</strong> (Virtual Account, QRIS/GoPay, Kartu Kredit).</p>
+                        
+                        <a href="checkout.php?id_sewa=<?= $id_sewa ?>&auto_pay=1" class="btn-primary-ferrari" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; width: 100%; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">
+                            <i class="fa-solid fa-credit-card"></i> Buka Midtrans Payment Gateway
+                        </a>
+                    </div>
                 </div>
 
                 <div style="font-size: 11px; color: var(--color-muted); padding-top: var(--spacing-xs); border-top: 1px dashed var(--color-hairline);">
-                    <i class="fa-solid fa-clock"></i> Batas waktu pembayaran adalah 24 jam setelah transaksi dibuat.
+                    <i class="fa-solid fa-clock"></i> Transaksi akan kedaluwarsa secara otomatis jika tidak dibayar dalam 24 jam.
                 </div>
             </div>
 
-            <!-- Upload Receipt Column -->
+            <!-- Manual Proof Upload (Alternative) -->
             <div style="background-color: var(--color-canvas-elevated); padding: var(--spacing-md); border: 1px solid var(--color-hairline);">
-                <h3 class="title-sm" style="border-bottom: 1px solid var(--color-hairline); padding-bottom: var(--spacing-xxs); margin-bottom: var(--spacing-xs); text-transform: uppercase;">Upload Bukti Pembayaran</h3>
+                <h3 class="title-sm" style="border-bottom: 1px solid var(--color-hairline); padding-bottom: var(--spacing-xxs); margin-bottom: var(--spacing-xs); text-transform: uppercase;">Alternatif: Upload Bukti Manual</h3>
+
+                <p style="font-size: 12px; color: var(--color-muted); margin-bottom: var(--spacing-xs);">Jika Anda melakukan pembayaran via transfer bank manual, silakan unggah struk/bukti di bawah ini:</p>
 
                 <!-- Upload Form -->
                 <form action="payment.php?id_sewa=<?= $id_sewa ?>" method="POST" enctype="multipart/form-data" style="margin-bottom: var(--spacing-sm);">
@@ -247,17 +212,17 @@ require_once 'includes/header.php';
                     <div style="margin-bottom: var(--spacing-sm);">
                         <label class="form-label-dark" for="bukti_bayar">Pilih File Bukti Transaksi</label>
                         <input type="file" name="bukti_bayar" id="bukti_bayar" class="form-input-dark" style="padding-top: var(--spacing-xxs); height: auto;" required>
-                        <small style="color: var(--color-muted); font-size: 11px; display: block; margin-top: 4px;">Format yang diperbolehkan: JPG, JPEG, PNG, PDF. Maksimal 2MB.</small>
+                        <small style="color: var(--color-muted); font-size: 11px; display: block; margin-top: 4px;">Format: JPG, JPEG, PNG, PDF. Maksimal 2MB.</small>
                     </div>
 
-                    <button type="submit" class="btn-primary-ferrari" style="width: 100%;">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> &nbsp; Unggah Bukti
+                    <button type="submit" class="btn-outline-dark-ferrari" style="width: 100%; height: 42px;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> &nbsp; Unggah Bukti Manual
                     </button>
                 </form>
 
                 <!-- Current Receipt Status / Preview -->
                 <div style="border-top: 1px solid var(--color-hairline); padding-top: var(--spacing-sm); margin-top: var(--spacing-sm);">
-                    <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--color-ink); display: block; margin-bottom: var(--spacing-xxs);">Status Bukti Saat Ini</span>
+                    <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--color-ink); display: block; margin-bottom: var(--spacing-xxs);">Status Bukti Upload</span>
                     
                     <?php if (!empty($payment['bukti_pembayaran'])): ?>
                         <div class="badge-pill-ferrari" style="border-color: var(--color-semantic-warning); color: var(--color-semantic-warning); margin-bottom: var(--spacing-xs);">
@@ -285,9 +250,6 @@ require_once 'includes/header.php';
                         <div class="badge-pill-ferrari" style="border-color: var(--color-muted); color: var(--color-muted);">
                             Belum Ada Bukti Diunggah
                         </div>
-                        <p style="font-size: 12px; color: var(--color-muted); margin-top: var(--spacing-xxs);">
-                            Pesanan Anda tidak akan diproses oleh admin sebelum Anda mengunggah bukti pembayaran yang sah.
-                        </p>
                     <?php endif; ?>
                 </div>
 

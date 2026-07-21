@@ -117,18 +117,13 @@ if (!$db_connected || !$car) {
     $car = isset($mock_cars[$id]) ? $mock_cars[$id] : $mock_cars[1];
 }
 
-// Define specs dynamically based on model for the family car spec grid
-$specs = [
-    'Avanza'        => ['seats' => '7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
-    'Xpander'       => ['seats' => '7 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
-    'Kijang Innova' => ['seats' => '7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Diesel / Bensin', 'engine_cap' => '2.400 cc / 2.000 cc'],
-    'All New Veloz' => ['seats' => '7 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
-    'Pajero Sport'  => ['seats' => '7 Kursi', 'transmission' => '8-Speed Matic', 'fuel' => 'Diesel (Solar)', 'engine_cap' => '2.400 cc'],
-    'Jazz'          => ['seats' => '5 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin', 'engine_cap' => '1.500 cc'],
-    'Civic Turbo'   => ['seats' => '5 Kursi', 'transmission' => 'CVT Otomatis', 'fuel' => 'Bensin Turbo', 'engine_cap' => '1.500 cc']
+// Define specs dynamically from car object (or fallback defaults if empty)
+$car_spec = [
+    'seats'        => !empty($car['kapasitas_kursi']) ? $car['kapasitas_kursi'] : '7 Kursi',
+    'transmission' => !empty($car['transmisi']) ? $car['transmisi'] : 'Manual / Matic',
+    'fuel'         => !empty($car['bahan_bakar']) ? $car['bahan_bakar'] : 'Bensin',
+    'engine_cap'   => !empty($car['kapasitas_mesin']) ? $car['kapasitas_mesin'] : '1.500 cc'
 ];
-
-$car_spec = isset($specs[$car['nama_mobil']]) ? $specs[$car['nama_mobil']] : ['seats' => '5-7 Kursi', 'transmission' => 'Manual / Matic', 'fuel' => 'Bensin / Diesel', 'engine_cap' => '1.500 cc'];
 
 $page_title = (!empty($car['merk']) && stripos($car['nama_mobil'], $car['merk']) === 0) ? $car['nama_mobil'] : $car['merk'] . " " . $car['nama_mobil'];
 require_once 'includes/header.php';

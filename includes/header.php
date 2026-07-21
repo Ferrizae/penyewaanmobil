@@ -23,7 +23,7 @@ $base_url = "/penyewaanmobil/";
     </a>
     
     <nav style="display: flex; gap: var(--spacing-md); align-items: center;">
-        <a href="<?= $base_url ?>index.php" class="nav-link-item">Katalog</a>
+        <a href="<?= $base_url ?>index.php" class="nav-link-item">Beranda</a>
         <a href="<?= $base_url ?>services.php" class="nav-link-item">Layanan</a>
         
         <?php if (isset($_SESSION['role'])): ?>
